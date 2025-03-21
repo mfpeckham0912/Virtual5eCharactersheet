@@ -1,0 +1,261 @@
+<!doctype html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>D&D 5e Virtual Character Sheet</title>
+  <style>
+   
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #ecf0f1;
+      --accent-color: #3498db;
+      --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      font-family: var(--font-family);
+      background-color: var(--secondary-color);
+      color: var(--primary-color);
+      line-height: 1.6;
+    }
+    header {
+      background-color: var(--primary-color);
+      color: var(--secondary-color);
+      padding: 1rem;
+      text-align: center;
+    }
+    .container {
+      display: flex;
+      min-height: 100vh;
+    }
+    nav {
+      width: 250px;
+      background: var(--accent-color);
+      padding: 1rem;
+      color: var(--secondary-color);
+    }
+    nav ul {
+      list-style: none;
+    }
+    nav ul li {
+      margin-bottom: 1rem;
+    }
+    nav ul li a {
+      color: var(--secondary-color);
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover {
+      color: var(--primary-color);
+    }
+    main {
+      flex: 1;
+      padding: 2rem;
+    }
+    .section {
+      background: #fff;
+      margin-bottom: 2rem;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+    }
+    .section h2 {
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+      border-bottom: 2px solid var(--accent-color);
+      padding-bottom: 0.5rem;
+    }
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+    .form-group input, 
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      font-size: 1rem;
+    }
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+      nav {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>D&D 5e Virtual Character Sheet</h1>
+  </header>
+  <div class="container">
+    <nav>
+      <ul>
+        <li><a href="#basic-info">Basic Info</a></li>
+        <li><a href="#attributes">Attributes</a></li>
+        <li><a href="#status">Status</a></li>
+        <li><a href="#saves-skills">Saves & Skills</a></li>
+        <li><a href="#spells">Spells</a></li>
+        <li><a href="#equipment">Equipment</a></li>
+        <li><a href="#backstory">Backstory</a></li>
+        <li><a href="#notes">Notes</a></li>
+      </ul>
+    </nav>
+    <main>
+      <!-- Basic Info Section -->
+      <section id="basic-info" class="section">
+        <h2>Basic Info</h2>
+        <div class="form-group">
+          <label for="char-name">Character Name</label>
+          <input type="text" id="char-name" name="char-name" placeholder="Enter character name" />
+        </div>
+        <div class="form-group">
+          <label for="class-level">Class / Level</label>
+          <input type="text" id="class-level" name="class-level" placeholder="e.g., Fighter 3 / Rogue 2" />
+        </div>
+        <div class="form-group">
+          <label for="race">Race</label>
+          <input type="text" id="race" name="race" placeholder="e.g., Human, Elf" />
+        </div>
+        <div class="form-group">
+          <label for="background">Background</label>
+          <input type="text" id="background" name="background" placeholder="e.g., Soldier, Sage" />
+        </div>
+      </section>
+      
+      <!-- Attributes Section -->
+      <section id="attributes" class="section">
+        <h2>Attributes</h2>
+        <div class="form-group">
+          <label for="strength">Strength</label>
+          <input type="number" id="strength" name="strength" placeholder="e.g., 15" />
+        </div>
+        <div class="form-group">
+          <label for="dexterity">Dexterity</label>
+          <input type="number" id="dexterity" name="dexterity" placeholder="e.g., 14" />
+        </div>
+        <div class="form-group">
+          <label for="constitution">Constitution</label>
+          <input type="number" id="constitution" name="constitution" placeholder="e.g., 13" />
+        </div>
+        <div class="form-group">
+          <label for="intelligence">Intelligence</label>
+          <input type="number" id="intelligence" name="intelligence" placeholder="e.g., 12" />
+        </div>
+        <div class="form-group">
+          <label for="wisdom">Wisdom</label>
+          <input type="number" id="wisdom" name="wisdom" placeholder="e.g., 10" />
+        </div>
+        <div class="form-group">
+          <label for="charisma">Charisma</label>
+          <input type="number" id="charisma" name="charisma" placeholder="e.g., 8" />
+        </div>
+      </section>
+      
+      <!-- Status Section -->
+      <section id="status" class="section">
+        <h2>Status</h2>
+        <div class="form-group">
+          <label for="hit-points">Hit Points</label>
+          <input type="number" id="hit-points" name="hit-points" placeholder="e.g., 45" />
+        </div>
+        <div class="form-group">
+          <label for="armor-class">Armor Class</label>
+          <input type="number" id="armor-class" name="armor-class" placeholder="e.g., 16" />
+        </div>
+        <div class="form-group">
+          <label for="speed">Speed</label>
+          <input type="number" id="speed" name="speed" placeholder="e.g., 30" />
+        </div>
+      </section>
+      
+      <!-- Saves & Skills Section -->
+      <section id="saves-skills" class="section">
+        <h2>Saves & Skills</h2>
+        <div class="form-group">
+          <label for="saves">Saving Throws (comma-separated)</label>
+          <input type="text" id="saves" name="saves" placeholder="e.g., Strength, Dexterity" />
+        </div>
+        <div class="form-group">
+          <label for="skills">Skills (comma-separated)</label>
+          <input type="text" id="skills" name="skills" placeholder="e.g., Athletics, Acrobatics, Stealth" />
+        </div>
+      </section>
+      
+      <!-- Spells Section -->
+      <section id="spells" class="section">
+        <h2>Spells</h2>
+        <div class="form-group">
+          <label for="spell-casting-class">Spellcasting Class</label>
+          <input type="text" id="spell-casting-class" name="spell-casting-class" placeholder="e.g., Wizard" />
+        </div>
+        <div class="form-group">
+          <label for="spell-attribute">Spellcasting Attribute</label>
+          <input type="text" id="spell-attribute" name="spell-attribute" placeholder="e.g., Intelligence" />
+        </div>
+        <div class="form-group">
+          <label for="spell-save-dc">Spell Save DC</label>
+          <input type="number" id="spell-save-dc" name="spell-save-dc" placeholder="e.g., 15" />
+        </div>
+        <div class="form-group">
+          <label for="spell-attack-bonus">Spell Attack Bonus</label>
+          <input type="number" id="spell-attack-bonus" name="spell-attack-bonus" placeholder="e.g., +7" />
+        </div>
+        <div class="form-group">
+          <label for="spells-list">Spells List</label>
+          <textarea id="spells-list" name="spells-list" rows="4" placeholder="List spells here"></textarea>
+        </div>
+      </section>
+      
+      <!-- Equipment Section -->
+      <section id="equipment" class="section">
+        <h2>Equipment</h2>
+        <div class="form-group">
+          <label for="equipment-list">Equipment List</label>
+          <textarea id="equipment-list" name="equipment-list" rows="4" placeholder="List your equipment"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="currency">Currency (e.g., Gold, Silver)</label>
+          <input type="text" id="currency" name="currency" placeholder="e.g., 100 GP" />
+        </div>
+      </section>
+      
+      <!-- Backstory Section -->
+      <section id="backstory" class="section">
+        <h2>Backstory</h2>
+        <div class="form-group">
+          <label for="backstory-text">Character Backstory</label>
+          <textarea id="backstory-text" name="backstory-text" rows="6" placeholder="Tell your character's story..."></textarea>
+        </div>
+      </section>
+      
+      <!-- Notes Section -->
+      <section id="notes" class="section">
+        <h2>Notes</h2>
+        <div class="form-group">
+          <label for="notes-text">Additional Notes</label>
+          <textarea id="notes-text" name="notes-text" rows="4" placeholder="Any extra details..."></textarea>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
