@@ -4,26 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>D&D 5e Virtual Character Sheet</title>
-  <!-- Link to our overarching CSS file -->
+  <!-- Link to the overarching CSS file -->
   <link rel="stylesheet" href="css/app.css">
-  <!-- External CSS libraries (e.g., W3.CSS and Font Awesome) -->
+  <!-- External CSS libraries (W3.CSS and Font Awesome) -->
   <link rel="stylesheet" href="css/w3.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   
   <!-- JavaScript Libraries and custom scripts -->
-  <script src="js/jquery.js"></script>
-  <!-- Optional: load saved JSON data -->
+  <script src="javascript/jquery.js"></script>
+  <!-- Optional: Load saved JSON sheet on startup -->
   <script src="sheet/savedSheet.json"></script>
-  <!-- Your additional JavaScript files -->
-  <script src="js/extra.js"></script>
-  <script src="js/changes.js"></script>
-  <script src="js/add-attack.js"></script>
-  <script src="js/save.js"></script>
-  <script src="js/load.js"></script>
-  <script src="js/app.js"></script>
+  <!-- Additional custom scripts -->
+  <script src="javascript/extra.js"></script>
+  <script src="javascript/changes.js"></script>
+  <script src="javascript/add-attack.js"></script>
+  <script src="javascript/app.js"></script>
+  <!-- Save and Load Scripts -->
+  <script src="javascript/save.js"></script>
+  <script src="javascript/load.js"></script>
 </head>
 <body class="w3-container w3-flat-clouds">
-  <!-- SIDEBAR -->
+  <!-- Sidebar Navigation -->
   <div class="w3-sidebar w3-bar-block w3-border-right w3-flat-clouds w3-animate-left" id="mySidebar" style="display:none">
     <button onclick="w3_close()" class="w3-bar-item w3-large w3-button w3-hover-blue-gray">Close &times;</button>
     <a href="#" class="w3-bar-item w3-button w3-hover-blue-gray" onclick="openPage('page-1'); w3_close()">Attributes & Top Bar</a>
@@ -34,6 +35,7 @@
     <div class="w3-dropdown-hover">
       <button class="w3-button w3-hover-blue-gray">Options <i class="fa fa-caret-down"></i></button>
       <div id="menu-options" class="w3-dropdown-content w3-bar-block w3-animate-right">
+        <!-- Call the load and save functions -->
         <a href="#" class="w3-bar-item w3-button w3-hover-blue-gray" onclick="loadNewSheet(); w3_close()">Load Save</a>
         <a href="#" class="w3-bar-item w3-button w3-hover-blue-gray" onclick="saveSheet(); w3_close()">Save Sheet</a>
         <a href="#" class="w3-bar-item w3-button w3-hover-blue-gray" onclick="lock()">Lock/Unlock Sheet</a>
@@ -53,7 +55,7 @@
     <button id="scroll-to-top" class="w3-button w3-xlarge w3-blue-gray w3-round">^</button>
   </div>
   
-  <!-- MAIN CONTENT -->
+  <!-- Main Content -->
   <div onclick="w3_close()">
     <!-- HEADER / BASIC INFO -->
     <header id="character-basic-info" class="page-width">
@@ -109,27 +111,27 @@
       <div id="top-bar" class="w3-card w3-round mb-md">
         <div class="row">
           <div class="col-half">
-            <input type="text" name="proficiency" maxlength="2" size="2" placeholder="Bonus">
+            <input type="text" name="proficiency" maxlength="2" placeholder="Bonus">
             <span class="label">Proficiency Bonus</span>
           </div>
           <div class="col-half">
-            <input type="text" name="initiative" maxlength="2" size="2" placeholder="Init">
+            <input type="text" name="initiative" maxlength="2" placeholder="Init">
             <span class="label">Initiative</span>
           </div>
           <div class="col-half">
-            <input type="text" name="passive-perception" maxlength="2" size="2" placeholder="Passive" class="auto-filled-border">
+            <input type="text" name="passive-perception" maxlength="2" placeholder="Passive" class="auto-filled-border">
             <span class="label">Passive Perception</span>
           </div>
           <div class="col-half">
-            <input type="text" name="ac" maxlength="2" size="2" placeholder="AC">
+            <input type="text" name="ac" maxlength="2" placeholder="AC">
             <span class="label">Armor Class</span>
           </div>
           <div class="col-half">
-            <input type="text" name="speed" maxlength="2" size="2" placeholder="Speed">
+            <input type="text" name="speed" maxlength="2" placeholder="Speed">
             <span class="label">Speed</span>
           </div>
           <div class="col-half">
-            <input type="text" name="spell-dc" maxlength="2" size="2" placeholder="Spell DC" class="auto-filled-border">
+            <input type="text" name="spell-dc" maxlength="2" placeholder="Spell DC" class="auto-filled-border">
             <span class="label">Spell Save DC</span>
           </div>
         </div>
@@ -139,33 +141,33 @@
         <div class="row">
           <div class="col-half">
             <span class="label">Strength</span>
-            <input type="text" name="str" maxlength="2" size="2" placeholder="Str">
-            <input type="text" name="str-mod" maxlength="2" size="2" placeholder="Mod" class="auto-filled-border">
+            <input type="text" name="str" maxlength="2" placeholder="Str">
+            <input type="text" name="str-mod" maxlength="2" placeholder="Mod" class="auto-filled-border">
           </div>
           <div class="col-half">
             <span class="label">Dexterity</span>
-            <input type="text" name="dex" maxlength="2" size="2" placeholder="Dex">
-            <input type="text" name="dex-mod" maxlength="2" size="2" placeholder="Mod" class="auto-filled-border">
+            <input type="text" name="dex" maxlength="2" placeholder="Dex">
+            <input type="text" name="dex-mod" maxlength="2" placeholder="Mod" class="auto-filled-border">
           </div>
           <div class="col-half">
             <span class="label">Constitution</span>
-            <input type="text" name="con" maxlength="2" size="2" placeholder="Con">
-            <input type="text" name="con-mod" maxlength="2" size="2" placeholder="Mod" class="auto-filled-border">
+            <input type="text" name="con" maxlength="2" placeholder="Con">
+            <input type="text" name="con-mod" maxlength="2" placeholder="Mod" class="auto-filled-border">
           </div>
           <div class="col-half">
             <span class="label">Intelligence</span>
-            <input type="text" name="int" maxlength="2" size="2" placeholder="Int">
-            <input type="text" name="int-mod" maxlength="2" size="2" placeholder="Mod" class="auto-filled-border">
+            <input type="text" name="int" maxlength="2" placeholder="Int">
+            <input type="text" name="int-mod" maxlength="2" placeholder="Mod" class="auto-filled-border">
           </div>
           <div class="col-half">
             <span class="label">Wisdom</span>
-            <input type="text" name="wis" maxlength="2" size="2" placeholder="Wis">
-            <input type="text" name="wis-mod" maxlength="2" size="2" placeholder="Mod" class="auto-filled-border">
+            <input type="text" name="wis" maxlength="2" placeholder="Wis">
+            <input type="text" name="wis-mod" maxlength="2" placeholder="Mod" class="auto-filled-border">
           </div>
           <div class="col-half">
             <span class="label">Charisma</span>
-            <input type="text" name="cha" maxlength="2" size="2" placeholder="Cha">
-            <input type="text" name="cha-mod" maxlength="2" size="2" placeholder="Mod" class="auto-filled-border">
+            <input type="text" name="cha" maxlength="2" placeholder="Cha">
+            <input type="text" name="cha-mod" maxlength="2" placeholder="Mod" class="auto-filled-border">
           </div>
         </div>
       </div>
@@ -227,7 +229,7 @@
           </div>
         </div>
       </div>
-      <!-- Saves & Skills -->
+      <!-- Saves & Skills Section -->
       <div id="saves-skills" class="w3-card w3-round mb-md">
         <div class="row">
           <div id="saves" class="col-half">
@@ -235,32 +237,32 @@
             <div class="row">
               <div id="str-save" class="box">
                 <input type="checkbox" name="prof">
-                <input type="text" name="str-save" maxlength="2" size="2" placeholder="Str Save">
+                <input type="text" name="str-save" maxlength="2" placeholder="Str Save">
                 <span class="sub-label">Strength</span>
               </div>
               <div id="dex-save" class="box">
                 <input type="checkbox" name="prof">
-                <input type="text" name="dex-save" maxlength="2" size="2" placeholder="Dex Save">
+                <input type="text" name="dex-save" maxlength="2" placeholder="Dex Save">
                 <span class="sub-label">Dexterity</span>
               </div>
               <div id="con-save" class="box">
                 <input type="checkbox" name="prof">
-                <input type="text" name="con-save" maxlength="2" size="2" placeholder="Con Save">
+                <input type="text" name="con-save" maxlength="2" placeholder="Con Save">
                 <span class="sub-label">Constitution</span>
               </div>
               <div id="int-save" class="box">
                 <input type="checkbox" name="prof">
-                <input type="text" name="int-save" maxlength="2" size="2" placeholder="Int Save">
+                <input type="text" name="int-save" maxlength="2" placeholder="Int Save">
                 <span class="sub-label">Intelligence</span>
               </div>
               <div id="wis-save" class="box">
                 <input type="checkbox" name="prof">
-                <input type="text" name="wis-save" maxlength="2" size="2" placeholder="Wis Save">
+                <input type="text" name="wis-save" maxlength="2" placeholder="Wis Save">
                 <span class="sub-label">Wisdom</span>
               </div>
               <div id="cha-save" class="box">
                 <input type="checkbox" name="prof">
-                <input type="text" name="cha-save" maxlength="2" size="2" placeholder="Cha Save">
+                <input type="text" name="cha-save" maxlength="2" placeholder="Cha Save">
                 <span class="sub-label">Charisma</span>
               </div>
             </div>
@@ -268,22 +270,22 @@
           <div id="skills" class="col-half">
             <span class="label">Skills</span>
             <div class="row">
-              <!-- Example: Strength Skill -->
+              <!-- Example: Athletics -->
               <div class="skill-section box">
                 <div><span class="label">Athletics</span></div>
                 <div>
                   <input type="checkbox" name="prof">
                   <input type="checkbox" name="expr">
-                  <input type="text" name="athletics-skill" maxlength="3" size="3" placeholder="Athletics">
+                  <input type="text" name="athletics-skill" maxlength="3" placeholder="Athletics">
                 </div>
               </div>
-              <!-- Add similar skill blocks for Dexterity, Intelligence, Wisdom, etc. -->
+              <!-- Example: Stealth -->
               <div class="skill-section box">
                 <div><span class="label">Stealth</span></div>
                 <div>
                   <input type="checkbox" name="prof">
                   <input type="checkbox" name="expr">
-                  <input type="text" name="stealth-skill" maxlength="3" size="3" placeholder="Stealth">
+                  <input type="text" name="stealth-skill" maxlength="3" placeholder="Stealth">
                 </div>
               </div>
             </div>
@@ -303,7 +305,7 @@
           </div>
         </div>
       </div>
-      <!-- Attacks & Charges -->
+      <!-- Attacks & Charges Section -->
       <div id="attacks-spells" class="w3-card w3-round mb-md">
         <table id="attacks">
           <tr>
@@ -364,7 +366,7 @@
             <button class="w3-button w3-blue-gray w3-round-large" onclick="att_attack()">Add Attack</button>
           </div>
         </div>
-        <!-- Charges (Example: Charge 1; duplicate as needed) -->
+        <!-- Charges (Example: Charge 1) -->
         <div id="charges" class="w3-card w3-round mt-md">
           <div id="charge-1" class="box">
             <input type="text" name="charge-1" placeholder="Charge Name">
@@ -523,7 +525,7 @@
             </div>
             <div class="col-half">
               <div class="box">
-                <input type="text" name="att" maxlength="3" size="3" placeholder="Casting Attribute" class="auto-filled-border">
+                <input type="text" name="att" maxlength="3" placeholder="Casting Attribute" class="auto-filled-border">
                 <span class="label">Spell Casting Attribute</span>
               </div>
             </div>
@@ -531,13 +533,13 @@
           <div class="row">
             <div class="col-half">
               <div class="box">
-                <input type="text" name="dc" maxlength="2" size="2" placeholder="Spell Save DC" class="auto-filled-border">
+                <input type="text" name="dc" maxlength="2" placeholder="Spell Save DC" class="auto-filled-border">
                 <span class="label">Spell Save DC</span>
               </div>
             </div>
             <div class="col-half">
               <div class="box">
-                <input type="text" name="bonus" maxlength="2" size="2" placeholder="Spell Attack Bonus" class="auto-filled-border">
+                <input type="text" name="bonus" maxlength="2" placeholder="Spell Attack Bonus" class="auto-filled-border">
                 <span class="label">Spell Attack Bonus</span>
               </div>
             </div>
@@ -557,14 +559,13 @@
               <div class="col-half box">
                 <input type="text" name="spell-name" placeholder="Spell Name">
               </div>
-              <!-- Add more cantrip fields as needed -->
             </div>
           </div>
-          <!-- 1st-Level Spells (Repeat block for levels 2-9) -->
+          <!-- 1st-Level Spells (Repeat for levels 2–9 as needed) -->
           <div id="level-1" class="mb-md">
             <div class="box">
               <span class="level">1<sup>st</sup> Level</span>
-              <input type="text" name="total-1" maxlength="2" size="2" placeholder="Total Slots">
+              <input type="text" name="total-1" maxlength="2" placeholder="Total Slots">
               <span class="sub-label">Slots Total</span>
             </div>
             <div class="row">
@@ -572,7 +573,6 @@
                 <input type="checkbox" name="preped">
                 <input type="text" name="spell-name" placeholder="Spell Name">
               </div>
-              <!-- Add more spell fields as needed -->
             </div>
           </div>
         </div>
@@ -657,16 +657,16 @@
       </div>
     </div>
     
-    <!-- FOOTER -->
+    <!-- FOOTER (No "Created by" text) -->
     <footer class="page-width">
       <div class="footer">
-        DnD 5<sup>th</sup> Edition Character Sheet || Created by 
-        <a href="https://github.com/Chee32" target="_blank">Chee32</a> &amp; 
-        <a href="https://github.com/lckynmbrsvn" target="_blank">lckynmbrsvn</a> || 
-        <a href="https://github.com/lckynmbrsvn/5e-Character-Sheet" target="_blank">GitHub Project</a>
+        D&D 5<sup>th</sup> Edition Character Sheet
       </div>
     </footer>
   </div>
+  
+  <!-- Hidden file input for loading a JSON sheet -->
+  <input type="file" id="load-sheet-input" style="display:none;">
   
   <!-- Minimal JavaScript for Sidebar and Page Navigation -->
   <script>
