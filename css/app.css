@@ -1,0 +1,237 @@
+/* app.css */
+
+/* ------------------------------------------
+   CSS Reset and Global Settings
+--------------------------------------------- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
+}
+
+/* ------------------------------------------
+   CSS Variables
+--------------------------------------------- */
+:root {
+  --primary-color: #2c3e50;
+  --secondary-color: #ecf0f1;
+  --accent-color: #3498db;
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  
+  /* Spacing variables */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 4rem;
+  
+  /* Layout */
+  --max-width: 1200px;
+}
+
+/* ------------------------------------------
+   Layout Containers
+--------------------------------------------- */
+.container {
+  width: 90%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--spacing-md);
+}
+
+/* ------------------------------------------
+   Header
+--------------------------------------------- */
+header {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  padding: var(--spacing-lg) var(--spacing-md);
+  text-align: center;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+/* ------------------------------------------
+   Navigation Bar
+--------------------------------------------- */
+nav {
+  background: var(--accent-color);
+  padding: var(--spacing-md);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  justify-content: center;
+}
+
+nav ul li a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  font-weight: bold;
+  padding: var(--spacing-sm) var(--spacing-md);
+  transition: background 0.3s;
+  border-radius: 4px;
+}
+
+nav ul li a:hover {
+  background: rgba(236, 240, 241, 0.2);
+}
+
+/* ------------------------------------------
+   Main Content
+--------------------------------------------- */
+main {
+  padding: var(--spacing-lg) 0;
+}
+
+/* ------------------------------------------
+   Section Styles
+--------------------------------------------- */
+section {
+  background-color: #fff;
+  margin-bottom: var(--spacing-lg);
+  padding: var(--spacing-lg);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+section h2 {
+  border-bottom: 2px solid var(--accent-color);
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-sm);
+  font-size: 1.75rem;
+}
+
+/* ------------------------------------------
+   Form Elements
+--------------------------------------------- */
+.form-group {
+  margin-bottom: var(--spacing-md);
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: var(--spacing-sm);
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+/* ------------------------------------------
+   Responsive Grid / Layout Utility Classes
+--------------------------------------------- */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
+
+.col-half {
+  flex: 1;
+  min-width: 300px;
+}
+
+/* Utility margin and padding classes */
+.mt-xs { margin-top: var(--spacing-xs); }
+.mt-sm { margin-top: var(--spacing-sm); }
+.mt-md { margin-top: var(--spacing-md); }
+.mt-lg { margin-top: var(--spacing-lg); }
+
+.mb-xs { margin-bottom: var(--spacing-xs); }
+.mb-sm { margin-bottom: var(--spacing-sm); }
+.mb-md { margin-bottom: var(--spacing-md); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
+
+.pt-xs { padding-top: var(--spacing-xs); }
+.pt-sm { padding-top: var(--spacing-sm); }
+.pt-md { padding-top: var(--spacing-md); }
+.pt-lg { padding-top: var(--spacing-lg); }
+
+.pb-xs { padding-bottom: var(--spacing-xs); }
+.pb-sm { padding-bottom: var(--spacing-sm); }
+.pb-md { padding-bottom: var(--spacing-md); }
+.pb-lg { padding-bottom: var(--spacing-lg); }
+
+/* ------------------------------------------
+   Footer
+--------------------------------------------- */
+footer {
+  text-align: center;
+  padding: var(--spacing-md);
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  margin-top: var(--spacing-lg);
+}
+
+/* ------------------------------------------
+   Buttons
+--------------------------------------------- */
+button,
+a.button {
+  background: var(--accent-color);
+  color: var(--secondary-color);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover,
+a.button:hover {
+  background: #2980b9;
+}
+
+/* ------------------------------------------
+   Page (Tabbed) Layout for Sections
+--------------------------------------------- */
+.page {
+  margin: var(--spacing-lg) 0;
+}
+
+/* ------------------------------------------
+   Sidebar (if used) adjustments
+--------------------------------------------- */
+.w3-sidebar {
+  z-index: 1000;
+}
+
+/* ------------------------------------------
+   Additional Clean Styles
+--------------------------------------------- */
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
