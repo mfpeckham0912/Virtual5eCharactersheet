@@ -1,118 +1,114 @@
-/* app.css — Super‑Compact layout (v3.4) */
+/* app.css — Outline‑Sheet style (v4.0) */
 /* --------------------------------------------------
-   Same ultra‑compact sizing as v3.3, but with CLEAR
-   INPUT OUTLINES so users immediately recognize
-   editable fields.  Each input/textarea/select now
-   has a subtle 1 px border that turns accent‑blue
-   on focus.
+   Re‑skinned to mimic the compact, clearly outlined
+   black‑and‑white character sheet aesthetic in the
+   screenshot:
+     • Strong 1‑2 px borders around all sections
+     • No drop‑shadows; crisp lines instead
+     • Inputs fully boxed with solid outlines
+     • Tight layout retained (≤ 680 px wrapper)
    -------------------------------------------------- */
 
-/* ---------- Reset & Global Styles ---------- */
+/***** Base Reset *****/
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{font-size:14px;scroll-behavior:smooth}
-body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#ecf0f1;color:#2c3e50;line-height:1.3;font-size:.7rem;padding-bottom:.4rem}
+body{font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif;background:#fff;color:#000;line-height:1.3;font-size:.72rem;padding:.4rem}
 
-/* ---------- Variables ---------- */
+/***** Global Variables *****/
 :root{
-  --spacing-xs:.05rem;
-  --spacing-sm:.15rem;
-  --spacing-md:.3rem;
-  --spacing-lg:.45rem;
-  --max-width:680px; /* wrapper width */
+  --spacing-xs:.08rem;
+  --spacing-sm:.2rem;
+  --spacing-md:.35rem;
+  --spacing-lg:.5rem;
+  --max-width:680px;
+  --border:#000;
+  --input-bg:#fff;
   --accent:#3498db;
-  --input-border:#b0b0b0;
-  --input-focus:#3498db;
 }
 
-/* ---------- Layout Containers ---------- */
+/***** Containers *****/
 .page-width{max-width:var(--max-width);margin:0 auto;padding:var(--spacing-md)}
+.row{display:flex;flex-wrap:wrap;gap:var(--spacing-xs);margin-bottom:var(--spacing-xs)}
+.col-half{flex:0 0 auto;max-width:165px;min-width:90px}
 
-/* ---------- Header ---------- */
-header{background:#2c3e50;color:#ecf0f1;padding:var(--spacing-sm);margin-bottom:var(--spacing-sm)}
-header h1{font-size:1rem;margin-bottom:var(--spacing-xs)}
+/***** Section Boxes (was .w3-card) *****/
+.w3-card{
+  background:var(--input-bg);
+  border:1.5px solid var(--border);
+  border-radius:4px;
+  padding:var(--spacing-sm);
+  margin-bottom:var(--spacing-sm);
+}
+.w3-round{border-radius:4px}
 
-/* ---------- Row / Column Grid ---------- */
-.row{display:flex;flex-wrap:wrap;gap:var(--spacing-xs);margin-bottom:var(--spacing-xs);justify-content:flex-start}
-.col-half{flex:0 0 auto;max-width:170px;min-width:90px}
+/***** Header Strip *****/
+header{
+  display:flex;
+  flex-wrap:wrap;
+  gap:var(--spacing-xs);
+  border:1.5px solid var(--border);
+  border-radius:4px;
+  padding:var(--spacing-sm);
+  margin-bottom:var(--spacing-sm);
+}
+header input{flex:1 1 155px}
+header .label{display:none}
 
-/* ---------- Cards ---------- */
-.w3-card{background:#fff;border-radius:2px;box-shadow:0 1px 1px rgba(0,0,0,.08);padding:var(--spacing-sm);margin-bottom:var(--spacing-sm)}
-.w3-round{border-radius:2px}
-
-/* ---------- Inputs & Labels ---------- */
-/* Base style for all inputs */
+/***** Inputs & Selects *****/
 input,textarea,select{
   font-family:inherit;
-  font-size:.65rem;
-  line-height:1.15;
-  background:#ffffff;
-  border:1px solid var(--input-border);
-  border-radius:2px;
+  font-size:.67rem;
+  background:var(--input-bg);
+  color:#000;
+  border:1px solid var(--border);
+  border-radius:3px;
+  padding:.18rem .28rem;
   outline:none;
-  transition:border-color .15s,box-shadow .15s;
 }
-input:focus,textarea:focus,select:focus{
-  border-color:var(--input-focus);
-  box-shadow:0 0 0 1px var(--input-focus) inset;
-}
-/* Sizing for standard text inputs and selects */
-input[type=text],select{
-  width:100%;
-  max-width:170px;
-  padding:.15rem .25rem;
+input[type=text],select{width:100%;max-width:165px;margin-bottom:var(--spacing-xs)}
+textarea{width:100%;max-width:165px;resize:none;margin-bottom:var(--spacing-xs);line-height:1.2}
+input:focus,textarea:focus,select:focus{border-color:var(--accent)}
+
+/* Prominent numeric boxes */
+#top-bar input,#attributes input,#hit-dice input,#hit-points input{max-width:68px;text-align:center;font-size:.75rem;padding:.15rem}
+
+/***** Labels *****/
+.label,.form-group label{
+  font-weight:700;
   margin-bottom:var(--spacing-xs);
+  font-size:.7rem;
 }
-/* Textarea sizing */
-textarea{
-  width:100%;
-  max-width:170px;
-  resize:none;
-  padding:.2rem;
-  margin-bottom:var(--spacing-xs);
-}
-/* Character header specific */
-#basic-info input,#character-info input{padding:.15rem .25rem}
 
-.label,.form-group label{font-weight:600;margin-bottom:var(--spacing-xs);display:inline-block;font-size:.68rem}
-
-/* ---------- Numeric Boxes ---------- */
-#top-bar input,#attributes input,#hit-dice input,#hit-points input{
-  font-size:.75rem;
-  padding:.12rem;
-  text-align:center;
-  max-width:70px;
-}
-#attributes .label{font-size:.7rem;margin-bottom:var(--spacing-xs)}
-
-/* ---------- Status Section ---------- */
-#hit-points div,#hit-dice div,#death-saves div,#conditions,#boons{padding:var(--spacing-xs);text-align:center}
-#hit-dice input,#hit-points input{width:68%;margin:0 auto;display:block;font-size:.75rem}
-
-/* ---------- Tables ---------- */
+/***** Tables *****/
 table{width:100%;border-collapse:collapse;margin-bottom:var(--spacing-xs)}
-th,td{padding:.12rem;border:1px solid #ccc;font-size:.65rem;text-align:center}
+th,td{border:1px solid var(--border);padding:.15rem;font-size:.65rem;text-align:center}
 
-/* ---------- Buttons ---------- */
+/***** Buttons *****/
 button,a.button{
-  background:var(--accent);
-  color:#ecf0f1;
-  padding:.18rem .45rem;
-  border:none;
-  border-radius:2px;
+  background:#e0e0e0;
+  color:#000;
+  border:1px solid var(--border);
+  border-radius:3px;
+  padding:.22rem .5rem;
   font-size:.65rem;
   cursor:pointer;
-  transition:background .2s;
 }
-button:hover,a.button:hover{background:#2980b9}
+button:hover,a.button:hover{background:#d0d0d0}
 
-/* ---------- Sidebar ---------- */
-.w3-sidebar{background:#fff;padding:var(--spacing-xs)}
-.w3-sidebar .w3-bar-item{font-size:.65rem;margin-bottom:var(--spacing-xs);padding:var(--spacing-xs) 0}
+/***** Sidebar *****/
+.w3-sidebar{background:#fff;border:1.5px solid var(--border);padding:var(--spacing-xs)}
+.w3-sidebar .w3-bar-item{font-size:.65rem;border-bottom:1px solid var(--border);padding:var(--spacing-xs) 0}
 
-/* ---------- Page & Footer ---------- */
-.page{margin:var(--spacing-sm) 0}
-.footer{text-align:center;background:#2c3e50;color:#ecf0f1;padding:var(--spacing-sm);border-radius:2px;font-size:.65rem;margin-top:var(--spacing-sm)}
+/***** Footer *****/
+.footer{text-align:center;border:1.5px solid var(--border);padding:var(--spacing-xs);border-radius:4px;font-size:.65rem;margin-top:var(--spacing-sm)}
 
-/* ---------- Misc ---------- */
-.expando{width:100%;text-align:left;margin-bottom:var(--spacing-xs)}
+/***** Misc *****/
+.expando{width:100%;text-align:left;margin-bottom:var(--spacing-xs);border:1px solid var(--border);background:#f5f5f5}
 
+/***** Hide leftover shadows from earlier versions *****/
+.w3-card,header{box-shadow:none}
+
+/***** Checkbox look slimmer *****/
+input[type=checkbox]{width:.7rem;height:.7rem}
+
+/* End of Outline‑Sheet style */
