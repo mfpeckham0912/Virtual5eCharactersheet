@@ -1,14 +1,15 @@
-/* app.css — Ultra‑Condensed layout */
+/* app.css — Super‑Compact layout (v3) */
 /* --------------------------------------------------
-   Further reduces padding, margins, font sizes, and
-   gaps so that most tab content fits with minimal
-   scrolling on standard laptop screens (1080p).
+   Goal: Dramatically shrink visual footprint so the
+   majority of each tab fits on‑screen with minimal
+   scrolling on a 14‑inch 1080p display.  This keeps
+   the same HTML structure—only tighter styles.
    -------------------------------------------------- */
 
 /* ---------- Reset & Global Styles ---------- */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{font-size:16px;scroll-behavior:smooth}
-body{font-family:var(--font-family);background:var(--secondary-color);color:var(--primary-color);line-height:1.4;padding-bottom:var(--spacing-lg);font-size:.8rem}
+html{font-size:15px;scroll-behavior:smooth} /* slight base drop  */
+body{font-family:var(--font-family);background:var(--secondary-color);color:var(--primary-color);line-height:1.35;padding-bottom:var(--spacing-lg);font-size:.75rem}
 
 /* ---------- CSS Variables ---------- */
 :root{
@@ -16,68 +17,64 @@ body{font-family:var(--font-family);background:var(--secondary-color);color:var(
   --secondary-color:#ecf0f1;
   --accent-color:#3498db;
   --font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
-  /* ultra‑tight spacing scale */
-  --spacing-xs:.1rem;
-  --spacing-sm:.25rem;
-  --spacing-md:.5rem;
-  --spacing-lg:.75rem;
-  --spacing-xl:1rem;
-  --max-width:960px; /* narrower overall wrapper */
+  /* ultra‑compact spacing */
+  --spacing-xs:.05rem;
+  --spacing-sm:.15rem;
+  --spacing-md:.35rem;
+  --spacing-lg:.5rem;
+  --spacing-xl:.75rem;
+  /* overall wrapper narrower */
+  --max-width:880px;
 }
 
 /* ---------- Layout Containers ---------- */
 .page-width{max-width:var(--max-width);margin:0 auto;padding:var(--spacing-md)}
-.container{width:97%;margin:0 auto;padding:var(--spacing-md)}
+.container{width:98%;margin:0 auto;padding:var(--spacing-md)}
 
 /* ---------- Header ---------- */
-header{background:var(--primary-color);color:var(--secondary-color);padding:var(--spacing-md);text-align:center;margin-bottom:var(--spacing-md)}
-header h1{font-size:1.6rem;margin-bottom:var(--spacing-sm)}
+header{background:var(--primary-color);color:var(--secondary-color);padding:var(--spacing-sm);text-align:center;margin-bottom:var(--spacing-sm)}
+header h1{font-size:1.3rem;margin-bottom:var(--spacing-xs)}
 
 /* ---------- Sidebar ---------- */
-.w3-sidebar{background:#fff;padding:var(--spacing-sm)}
-.w3-sidebar .w3-bar-item{margin-bottom:var(--spacing-xs);font-size:.8rem}
+.w3-sidebar{background:#fff;padding:var(--spacing-xs)}
+.w3-sidebar .w3-bar-item{margin-bottom:var(--spacing-xs);font-size:.75rem;padding:var(--spacing-xs) 0}
 
 /* ---------- Inputs & Textareas ---------- */
-input,textarea,select{border:none;outline:none;font-family:inherit;font-size:.8rem}
-input[type=text],select{width:100%;padding:.3rem .4rem;border-bottom:1px solid #ccc;margin-bottom:var(--spacing-xs);background:#fff;border-radius:3px}
-textarea{width:100%;resize:none;padding:.4rem;background:#fff;border-radius:3px;margin-bottom:var(--spacing-sm)}
+input,textarea,select{border:none;outline:none;font-family:inherit;font-size:.75rem}
+input[type=text],select{width:100%;padding:.2rem .3rem;border-bottom:1px solid #ccc;margin-bottom:var(--spacing-xs);background:#fff;border-radius:3px}
+textarea{width:100%;resize:none;padding:.3rem;background:#fff;border-radius:3px;margin-bottom:var(--spacing-xs)}
 .auto-filled-border{border:1px solid #e91e6380}
-.label,.form-group label{font-weight:600;margin-bottom:var(--spacing-xs);display:inline-block;font-size:.85rem}
+.label,.form-group label{font-weight:600;margin-bottom:var(--spacing-xs);display:inline-block;font-size:.8rem}
 
 /* ---------- Grid / Utility ---------- */
-.row{display:flex;flex-wrap:wrap;gap:var(--spacing-sm);margin-bottom:var(--spacing-sm)}
-.col-half{flex:1;min-width:160px}
-.mt-xs{margin-top:var(--spacing-xs)}.mt-sm{margin-top:var(--spacing-sm)}.mt-md{margin-top:var(--spacing-md)}.mt-lg{margin-top:var(--spacing-lg)}
-.mb-xs{margin-bottom:var(--spacing-xs)}.mb-sm{margin-bottom:var(--spacing-sm)}.mb-md{margin-bottom:var(--spacing-md)}.mb-lg{margin-bottom:var(--spacing-lg)}
+.row{display:flex;flex-wrap:wrap;gap:var(--spacing-xs);margin-bottom:var(--spacing-xs)}
+.col-half{flex:1;min-width:140px}
 
 /* ---------- Cards ---------- */
-.w3-card{background:#fff;border-radius:4px;box-shadow:0 1px 3px rgba(0,0,0,.12);padding:var(--spacing-sm);margin-bottom:var(--spacing-sm)}
-.w3-round{border-radius:4px}
+.w3-card{background:#fff;border-radius:3px;box-shadow:0 1px 2px rgba(0,0,0,.12);padding:var(--spacing-sm);margin-bottom:var(--spacing-sm)}
+.w3-round{border-radius:3px}
 
-/* ---------- High‑visibility numeric inputs ---------- */
-#top-bar input,#attributes input,#hit-dice input,#hit-points input{font-size:1rem;padding:.25rem;text-align:center;border-radius:3px;box-shadow:0 1px 2px rgba(0,0,0,.12)}
-#attributes .label{font-size:.9rem;margin-bottom:var(--spacing-xs)}
+/* ---------- Prominent Numeric Inputs ---------- */
+#top-bar input,#attributes input,#hit-dice input,#hit-points input{font-size:.9rem;padding:.2rem;text-align:center;border-radius:3px;box-shadow:0 1px 2px rgba(0,0,0,.1)}
+#attributes .label{font-size:.8rem;margin-bottom:var(--spacing-xs)}
 
 /* ---------- Status Section ---------- */
 #hit-points div,#hit-dice div,#death-saves div,#conditions,#boons{padding:var(--spacing-xs);text-align:center}
-#hit-dice input,#hit-points input{width:75%;margin:0 auto;display:block;font-size:1rem}
+#hit-dice input,#hit-points input{width:70%;margin:0 auto;display:block;font-size:.9rem}
 
 /* ---------- Tables ---------- */
 table{width:100%;border-collapse:collapse;margin-bottom:var(--spacing-xs)}
-th,td{padding:.2rem;border:1px solid #ccc;font-size:.75rem;text-align:center}
+th,td{padding:.15rem;border:1px solid #ccc;font-size:.7rem;text-align:center}
 
 /* ---------- Buttons ---------- */
-button,a.button{background:var(--accent-color);color:var(--secondary-color);padding:.3rem .6rem;border-radius:3px;border:none;cursor:pointer;transition:background .3s;font-size:.8rem}
+button,a.button{background:var(--accent-color);color:var(--secondary-color);padding:.2rem .5rem;border-radius:3px;border:none;cursor:pointer;transition:background .2s;font-size:.75rem}
 button:hover,a.button:hover{background:#2980b9}
 
 /* ---------- Page Layout ---------- */
-.page{margin:var(--spacing-md) 0}
+.page{margin:var(--spacing-sm) 0}
 
 /* ---------- Footer ---------- */
-.footer{text-align:center;background:var(--primary-color);color:var(--secondary-color);padding:var(--spacing-sm);border-radius:4px;margin-top:var(--spacing-md);font-size:.8rem}
+.footer{text-align:center;background:var(--primary-color);color:var(--secondary-color);padding:var(--spacing-sm);border-radius:3px;margin-top:var(--spacing-sm);font-size:.75rem}
 
 /* ---------- Miscellaneous ---------- */
 .expando{width:100%;text-align:left;margin-bottom:var(--spacing-xs)}
-
-
-
