@@ -87,10 +87,120 @@ select {
 textarea {
   width: 100%;
   resize: none;
+  padding: var(--spacing-sm);/* app.css — Condensed layout version */
+/* --------------------------------------------------
+   This file replaces the previous app.css to achieve
+   a slimmer, less "fat" layout across the entire
+   Virtual5eCharacterSheet project.
+   -------------------------------------------------- */
+
+/* ---------- Reset & Global Styles ---------- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px; /* base remains the same to keep rem math sensible */
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  line-height: 1.5;
+  padding-bottom: var(--spacing-lg);
+  font-size: 0.9rem; /* slightly smaller global type */
+}
+
+/* ---------- CSS Variables ---------- */
+:root {
+  --primary-color: #2c3e50;
+  --secondary-color: #ecf0f1;
+  --accent-color: #3498db;
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  /* condensed spacing scale */
+  --spacing-xs: 0.25rem;  /* was 0.5rem */
+  --spacing-sm: 0.5rem;   /* was 1rem  */
+  --spacing-md: 0.75rem;  /* was 1.5rem*/
+  --spacing-lg: 1rem;     /* was 2rem  */
+  --spacing-xl: 1.5rem;   /* was 3rem  */
+
+  /* overall max width tightened */
+  --max-width: 1000px;    /* was 1200px */
+}
+
+/* ---------- Layout Containers ---------- */
+.page-width {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--spacing-md);
+}
+
+.container {
+  width: 95%;
+  margin: 0 auto;
+  padding: var(--spacing-md);
+}
+
+/* ---------- Header ---------- */
+header {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  padding: var(--spacing-lg) var(--spacing-md);
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+header h1 {
+  font-size: 2rem; /* was 2.5rem */
+  margin-bottom: var(--spacing-sm);
+}
+
+/* ---------- Navigation (Sidebar) ---------- */
+.w3-sidebar {
+  background-color: #fff;
   padding: var(--spacing-sm);
+}
+
+.w3-sidebar .w3-bar-item {
+  margin-bottom: var(--spacing-xs);
+}
+
+/* ---------- Form Elements ---------- */
+input,
+textarea,
+select {
+  border: none;
+  outline: none;
+  font-family: inherit;
+}
+
+input[type="text"],
+select {
+  width: 100%;
+  padding: 0.4rem 0.5rem; /* tighter */
+  font-size: 0.9rem;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: var(--spacing-xs);
   background-color: #fff;
   border-radius: 4px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+textarea {
+  width: 100%;
+  resize: none;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
   margin-bottom: var(--spacing-sm);
 }
 
@@ -98,24 +208,25 @@ textarea {
   border: 1px solid #e91e6380;
 }
 
-.form-group label,
-.label {
+.label,
+.form-group label {
   font-weight: bold;
   margin-bottom: var(--spacing-xs);
   display: inline-block;
+  font-size: 0.95rem; /* smaller labels */
 }
 
 /* ---------- Utility Classes ---------- */
 .row {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--spacing-md);
-  margin-bottom: var(--spacing-md);
+  gap: var(--spacing-sm); /* was spacing-md */
+  margin-bottom: var(--spacing-sm);
 }
 
 .col-half {
   flex: 1;
-  min-width: 280px;
+  min-width: 220px; /* was 280px */
 }
 
 .mt-xs { margin-top: var(--spacing-xs); }
@@ -131,57 +242,29 @@ textarea {
 /* ---------- Cards / Sections ---------- */
 .w3-card {
   background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16), 0 2px 10px rgba(0, 0, 0, 0.12);
-  padding: var(--spacing-md);
-  margin-bottom: var(--spacing-lg);
-}
-
-.w3-round {
-  border-radius: 8px;
-}
-
-/* ---------- Specific Section Styles ---------- */
-#basic-info,
-#character-info {
+  border-radius: 6px; /* slightly tighter radius */
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+  padding: var(--spacing-sm);
   margin-bottom: var(--spacing-md);
 }
 
-input[type="text"] {
-  width: 100%;
-  padding: var(--spacing-sm);
-  font-size: 1rem;
-  border-bottom: 1px solid #ccc;
-  margin-bottom: var(--spacing-xs);
-}
+.w3-round { border-radius: 6px; }
 
-textarea,
-select {
-  font-size: 1rem;
-}
-
-/* ---------- Top Bar ---------- */
-#top-bar input {
-  font-size: 1.5rem;
+/* ---------- Top Bar & Attribute Large Inputs ---------- */
+#top-bar input,
+#attributes input,
+#hit-dice input,
+#hit-points input {
+  font-size: 1.25rem; /* was 1.5rem */
+  padding: 0.35rem;
   text-align: center;
-  padding: var(--spacing-sm);
-  width: 100%;
   border-radius: 4px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
 }
 
-/* ---------- Attributes ---------- */
 #attributes .label {
-  font-size: 1.2rem;
+  font-size: 1rem; /* was 1.2rem */
   margin-bottom: var(--spacing-xs);
-}
-
-#attributes input {
-  text-align: center;
-  padding: var(--spacing-sm);
-  font-size: 1.5rem;
-  border-radius: 4px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
 }
 
 /* ---------- Status Section ---------- */
@@ -190,7 +273,7 @@ select {
 #death-saves div,
 #conditions,
 #boons {
-  padding: var(--spacing-sm);
+  padding: var(--spacing-xs);
   text-align: center;
 }
 
@@ -199,7 +282,7 @@ select {
   width: 80%;
   margin: 0 auto;
   display: block;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 }
 
 /* ---------- Tables ---------- */
@@ -209,10 +292,12 @@ table {
   margin-bottom: var(--spacing-sm);
 }
 
-th, td {
-  padding: var(--spacing-xs);
+th,
+td {
+  padding: 0.25rem; /* was spacing-xs 0.5rem */
   text-align: center;
   border: 1px solid #ccc;
+  font-size: 0.85rem;
 }
 
 /* ---------- Buttons ---------- */
@@ -220,11 +305,12 @@ button,
 a.button {
   background-color: var(--accent-color);
   color: var(--secondary-color);
-  padding: var(--spacing-sm) var(--spacing-md);
+  padding: 0.35rem 0.75rem; /* tighter */
   border-radius: 4px;
   border: none;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease;
+  font-size: 0.9rem;
 }
 
 button:hover,
@@ -244,14 +330,16 @@ a.button:hover {
   background-color: var(--primary-color);
   color: var(--secondary-color);
   padding: var(--spacing-md);
-  border-radius: 8px;
+  border-radius: 6px;
   margin-top: var(--spacing-lg);
+  font-size: 0.9rem;
 }
 
 /* ---------- Miscellaneous ---------- */
 .expando {
   width: 100%;
   text-align: left;
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: var(--spacing-xs);
 }
+
 
