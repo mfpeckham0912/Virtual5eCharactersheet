@@ -1,345 +1,83 @@
-/* app.css */
-
-/* ---------- Reset & Global Styles ---------- */
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  font-size: 16px;
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: var(--font-family);
-  background-color: var(--secondary-color);
-  color: var(--primary-color);
-  line-height: 1.6;
-  padding-bottom: var(--spacing-xl);
-}
-
-/* ---------- CSS Variables ---------- */
-:root {
-  --primary-color: #2c3e50;
-  --secondary-color: #ecf0f1;
-  --accent-color: #3498db;
-  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  
-  --spacing-xs: 0.5rem;
-  --spacing-sm: 1rem;
-  --spacing-md: 1.5rem;
-  --spacing-lg: 2rem;
-  --spacing-xl: 3rem;
-  
-  --max-width: 1200px;
-}
-
-/* ---------- Layout Containers ---------- */
-.page-width {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: var(--spacing-md);
-}
-
-.container {
-  width: 90%;
-  margin: 0 auto;
-  padding: var(--spacing-md);
-}
-
-/* ---------- Header ---------- */
-header {
-  background-color: var(--primary-color);
-  color: var(--secondary-color);
-  padding: var(--spacing-lg) var(--spacing-md);
-  text-align: center;
-  margin-bottom: var(--spacing-lg);
-}
-
-header h1 {
-  font-size: 2.5rem;
-  margin-bottom: var(--spacing-sm);
-}
-
-/* ---------- Navigation (Sidebar) ---------- */
-.w3-sidebar {
-  background-color: #fff;
-  padding: var(--spacing-md);
-}
-
-.w3-sidebar .w3-bar-item {
-  margin-bottom: var(--spacing-sm);
-}
-
-/* ---------- Form Elements ---------- */
-input,
-textarea,
-select {
-  border: none;
-  outline: none;
-  font-family: inherit;
-}
-
-textarea {
-  width: 100%;
-  resize: none;
-  padding: var(--spacing-sm);/* app.css — Condensed layout version */
+/* app.css — Ultra‑Condensed layout */
 /* --------------------------------------------------
-   This file replaces the previous app.css to achieve
-   a slimmer, less "fat" layout across the entire
-   Virtual5eCharacterSheet project.
+   Further reduces padding, margins, font sizes, and
+   gaps so that most tab content fits with minimal
+   scrolling on standard laptop screens (1080p).
    -------------------------------------------------- */
 
 /* ---------- Reset & Global Styles ---------- */
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  font-size: 16px; /* base remains the same to keep rem math sensible */
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: var(--font-family);
-  background-color: var(--secondary-color);
-  color: var(--primary-color);
-  line-height: 1.5;
-  padding-bottom: var(--spacing-lg);
-  font-size: 0.9rem; /* slightly smaller global type */
-}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:var(--font-family);background:var(--secondary-color);color:var(--primary-color);line-height:1.4;padding-bottom:var(--spacing-lg);font-size:.8rem}
 
 /* ---------- CSS Variables ---------- */
-:root {
-  --primary-color: #2c3e50;
-  --secondary-color: #ecf0f1;
-  --accent-color: #3498db;
-  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
-  /* condensed spacing scale */
-  --spacing-xs: 0.25rem;  /* was 0.5rem */
-  --spacing-sm: 0.5rem;   /* was 1rem  */
-  --spacing-md: 0.75rem;  /* was 1.5rem*/
-  --spacing-lg: 1rem;     /* was 2rem  */
-  --spacing-xl: 1.5rem;   /* was 3rem  */
-
-  /* overall max width tightened */
-  --max-width: 1000px;    /* was 1200px */
+:root{
+  --primary-color:#2c3e50;
+  --secondary-color:#ecf0f1;
+  --accent-color:#3498db;
+  --font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+  /* ultra‑tight spacing scale */
+  --spacing-xs:.1rem;
+  --spacing-sm:.25rem;
+  --spacing-md:.5rem;
+  --spacing-lg:.75rem;
+  --spacing-xl:1rem;
+  --max-width:960px; /* narrower overall wrapper */
 }
 
 /* ---------- Layout Containers ---------- */
-.page-width {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: var(--spacing-md);
-}
-
-.container {
-  width: 95%;
-  margin: 0 auto;
-  padding: var(--spacing-md);
-}
+.page-width{max-width:var(--max-width);margin:0 auto;padding:var(--spacing-md)}
+.container{width:97%;margin:0 auto;padding:var(--spacing-md)}
 
 /* ---------- Header ---------- */
-header {
-  background-color: var(--primary-color);
-  color: var(--secondary-color);
-  padding: var(--spacing-lg) var(--spacing-md);
-  text-align: center;
-  margin-bottom: var(--spacing-lg);
-}
+header{background:var(--primary-color);color:var(--secondary-color);padding:var(--spacing-md);text-align:center;margin-bottom:var(--spacing-md)}
+header h1{font-size:1.6rem;margin-bottom:var(--spacing-sm)}
 
-header h1 {
-  font-size: 2rem; /* was 2.5rem */
-  margin-bottom: var(--spacing-sm);
-}
+/* ---------- Sidebar ---------- */
+.w3-sidebar{background:#fff;padding:var(--spacing-sm)}
+.w3-sidebar .w3-bar-item{margin-bottom:var(--spacing-xs);font-size:.8rem}
 
-/* ---------- Navigation (Sidebar) ---------- */
-.w3-sidebar {
-  background-color: #fff;
-  padding: var(--spacing-sm);
-}
+/* ---------- Inputs & Textareas ---------- */
+input,textarea,select{border:none;outline:none;font-family:inherit;font-size:.8rem}
+input[type=text],select{width:100%;padding:.3rem .4rem;border-bottom:1px solid #ccc;margin-bottom:var(--spacing-xs);background:#fff;border-radius:3px}
+textarea{width:100%;resize:none;padding:.4rem;background:#fff;border-radius:3px;margin-bottom:var(--spacing-sm)}
+.auto-filled-border{border:1px solid #e91e6380}
+.label,.form-group label{font-weight:600;margin-bottom:var(--spacing-xs);display:inline-block;font-size:.85rem}
 
-.w3-sidebar .w3-bar-item {
-  margin-bottom: var(--spacing-xs);
-}
+/* ---------- Grid / Utility ---------- */
+.row{display:flex;flex-wrap:wrap;gap:var(--spacing-sm);margin-bottom:var(--spacing-sm)}
+.col-half{flex:1;min-width:160px}
+.mt-xs{margin-top:var(--spacing-xs)}.mt-sm{margin-top:var(--spacing-sm)}.mt-md{margin-top:var(--spacing-md)}.mt-lg{margin-top:var(--spacing-lg)}
+.mb-xs{margin-bottom:var(--spacing-xs)}.mb-sm{margin-bottom:var(--spacing-sm)}.mb-md{margin-bottom:var(--spacing-md)}.mb-lg{margin-bottom:var(--spacing-lg)}
 
-/* ---------- Form Elements ---------- */
-input,
-textarea,
-select {
-  border: none;
-  outline: none;
-  font-family: inherit;
-}
+/* ---------- Cards ---------- */
+.w3-card{background:#fff;border-radius:4px;box-shadow:0 1px 3px rgba(0,0,0,.12);padding:var(--spacing-sm);margin-bottom:var(--spacing-sm)}
+.w3-round{border-radius:4px}
 
-input[type="text"],
-select {
-  width: 100%;
-  padding: 0.4rem 0.5rem; /* tighter */
-  font-size: 0.9rem;
-  border-bottom: 1px solid #ccc;
-  margin-bottom: var(--spacing-xs);
-  background-color: #fff;
-  border-radius: 4px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
-}
-
-textarea {
-  width: 100%;
-  resize: none;
-  padding: 0.5rem;
-  font-size: 0.9rem;
-  background-color: #fff;
-  border-radius: 4px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
-  margin-bottom: var(--spacing-sm);
-}
-
-.auto-filled-border {
-  border: 1px solid #e91e6380;
-}
-
-.label,
-.form-group label {
-  font-weight: bold;
-  margin-bottom: var(--spacing-xs);
-  display: inline-block;
-  font-size: 0.95rem; /* smaller labels */
-}
-
-/* ---------- Utility Classes ---------- */
-.row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--spacing-sm); /* was spacing-md */
-  margin-bottom: var(--spacing-sm);
-}
-
-.col-half {
-  flex: 1;
-  min-width: 220px; /* was 280px */
-}
-
-.mt-xs { margin-top: var(--spacing-xs); }
-.mt-sm { margin-top: var(--spacing-sm); }
-.mt-md { margin-top: var(--spacing-md); }
-.mt-lg { margin-top: var(--spacing-lg); }
-
-.mb-xs { margin-bottom: var(--spacing-xs); }
-.mb-sm { margin-bottom: var(--spacing-sm); }
-.mb-md { margin-bottom: var(--spacing-md); }
-.mb-lg { margin-bottom: var(--spacing-lg); }
-
-/* ---------- Cards / Sections ---------- */
-.w3-card {
-  background-color: #fff;
-  border-radius: 6px; /* slightly tighter radius */
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
-  padding: var(--spacing-sm);
-  margin-bottom: var(--spacing-md);
-}
-
-.w3-round { border-radius: 6px; }
-
-/* ---------- Top Bar & Attribute Large Inputs ---------- */
-#top-bar input,
-#attributes input,
-#hit-dice input,
-#hit-points input {
-  font-size: 1.25rem; /* was 1.5rem */
-  padding: 0.35rem;
-  text-align: center;
-  border-radius: 4px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
-}
-
-#attributes .label {
-  font-size: 1rem; /* was 1.2rem */
-  margin-bottom: var(--spacing-xs);
-}
+/* ---------- High‑visibility numeric inputs ---------- */
+#top-bar input,#attributes input,#hit-dice input,#hit-points input{font-size:1rem;padding:.25rem;text-align:center;border-radius:3px;box-shadow:0 1px 2px rgba(0,0,0,.12)}
+#attributes .label{font-size:.9rem;margin-bottom:var(--spacing-xs)}
 
 /* ---------- Status Section ---------- */
-#hit-points div,
-#hit-dice div,
-#death-saves div,
-#conditions,
-#boons {
-  padding: var(--spacing-xs);
-  text-align: center;
-}
-
-#hit-dice input,
-#hit-points input {
-  width: 80%;
-  margin: 0 auto;
-  display: block;
-  font-size: 1.25rem;
-}
+#hit-points div,#hit-dice div,#death-saves div,#conditions,#boons{padding:var(--spacing-xs);text-align:center}
+#hit-dice input,#hit-points input{width:75%;margin:0 auto;display:block;font-size:1rem}
 
 /* ---------- Tables ---------- */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: var(--spacing-sm);
-}
-
-th,
-td {
-  padding: 0.25rem; /* was spacing-xs 0.5rem */
-  text-align: center;
-  border: 1px solid #ccc;
-  font-size: 0.85rem;
-}
+table{width:100%;border-collapse:collapse;margin-bottom:var(--spacing-xs)}
+th,td{padding:.2rem;border:1px solid #ccc;font-size:.75rem;text-align:center}
 
 /* ---------- Buttons ---------- */
-button,
-a.button {
-  background-color: var(--accent-color);
-  color: var(--secondary-color);
-  padding: 0.35rem 0.75rem; /* tighter */
-  border-radius: 4px;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  font-size: 0.9rem;
-}
-
-button:hover,
-a.button:hover {
-  background-color: #2980b9;
-}
+button,a.button{background:var(--accent-color);color:var(--secondary-color);padding:.3rem .6rem;border-radius:3px;border:none;cursor:pointer;transition:background .3s;font-size:.8rem}
+button:hover,a.button:hover{background:#2980b9}
 
 /* ---------- Page Layout ---------- */
-.page {
-  margin-top: var(--spacing-lg);
-  margin-bottom: var(--spacing-lg);
-}
+.page{margin:var(--spacing-md) 0}
 
 /* ---------- Footer ---------- */
-.footer {
-  text-align: center;
-  background-color: var(--primary-color);
-  color: var(--secondary-color);
-  padding: var(--spacing-md);
-  border-radius: 6px;
-  margin-top: var(--spacing-lg);
-  font-size: 0.9rem;
-}
+.footer{text-align:center;background:var(--primary-color);color:var(--secondary-color);padding:var(--spacing-sm);border-radius:4px;margin-top:var(--spacing-md);font-size:.8rem}
 
 /* ---------- Miscellaneous ---------- */
-.expando {
-  width: 100%;
-  text-align: left;
-  margin-bottom: var(--spacing-xs);
-}
+.expando{width:100%;text-align:left;margin-bottom:var(--spacing-xs)}
+
 
 
