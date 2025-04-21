@@ -1,61 +1,108 @@
-/* app.css — Super‑Compact layout (v3.2) */
+/* app.css — Super‑Compact layout (v3.4) */
 /* --------------------------------------------------
-   Further compression: minimal padding & spacing so
-   cards sit tightly together and inputs shrink to the
-   smallest practical size while remaining readable.
+   Same ultra‑compact sizing as v3.3, but with CLEAR
+   INPUT OUTLINES so users immediately recognize
+   editable fields.  Each input/textarea/select now
+   has a subtle 1 px border that turns accent‑blue
+   on focus.
    -------------------------------------------------- */
 
 /* ---------- Reset & Global Styles ---------- */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{font-size:14px;scroll-behavior:smooth}
-body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#ecf0f1;color:#2c3e50;line-height:1.3;font-size:.7rem;padding-bottom:.5rem}
+body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#ecf0f1;color:#2c3e50;line-height:1.3;font-size:.7rem;padding-bottom:.4rem}
 
 /* ---------- Variables ---------- */
 :root{
-  --spacing-xs:.025rem;  /* super‑tight */
-  --spacing-sm:.1rem;
-  --spacing-md:.25rem;
-  --spacing-lg:.4rem;
-  --max-width:840px;
+  --spacing-xs:.05rem;
+  --spacing-sm:.15rem;
+  --spacing-md:.3rem;
+  --spacing-lg:.45rem;
+  --max-width:680px; /* wrapper width */
   --accent:#3498db;
+  --input-border:#b0b0b0;
+  --input-focus:#3498db;
 }
 
 /* ---------- Layout Containers ---------- */
 .page-width{max-width:var(--max-width);margin:0 auto;padding:var(--spacing-md)}
 
-/* ---------- Header (Character Name / Class area) ---------- */
+/* ---------- Header ---------- */
 header{background:#2c3e50;color:#ecf0f1;padding:var(--spacing-sm);margin-bottom:var(--spacing-sm)}
-header h1{font-size:1.1rem;margin-bottom:var(--spacing-xs)}
+header h1{font-size:1rem;margin-bottom:var(--spacing-xs)}
 
 /* ---------- Row / Column Grid ---------- */
-.row{display:flex;flex-wrap:wrap;gap:var(--spacing-xs);margin-bottom:var(--spacing-xs)}
-.col-half{flex:1;min-width:100px}
+.row{display:flex;flex-wrap:wrap;gap:var(--spacing-xs);margin-bottom:var(--spacing-xs);justify-content:flex-start}
+.col-half{flex:0 0 auto;max-width:170px;min-width:90px}
 
 /* ---------- Cards ---------- */
-.w3-card{background:#fff;border-radius:2px;box-shadow:0 1px 1px rgba(0,0,0,.08);padding:var(--spacing-sm);margin-bottom:var(--spacing-xs)}
+.w3-card{background:#fff;border-radius:2px;box-shadow:0 1px 1px rgba(0,0,0,.08);padding:var(--spacing-sm);margin-bottom:var(--spacing-sm)}
 .w3-round{border-radius:2px}
 
 /* ---------- Inputs & Labels ---------- */
-input,textarea,select{border:none;outline:none;font-family:inherit;font-size:.65rem;line-height:1.1}
-input[type=text],select{width:100%;padding:.1rem .2rem;border-bottom:1px solid #ccc;margin-bottom:var(--spacing-xs);background:#fff;border-radius:2px}
-textarea{width:100%;resize:none;padding:.2rem;border-radius:2px;margin-bottom:var(--spacing-xs)}
-#basic-info input,#character-info input{font-size:.65rem;padding:.1rem .2rem}
+/* Base style for all inputs */
+input,textarea,select{
+  font-family:inherit;
+  font-size:.65rem;
+  line-height:1.15;
+  background:#ffffff;
+  border:1px solid var(--input-border);
+  border-radius:2px;
+  outline:none;
+  transition:border-color .15s,box-shadow .15s;
+}
+input:focus,textarea:focus,select:focus{
+  border-color:var(--input-focus);
+  box-shadow:0 0 0 1px var(--input-focus) inset;
+}
+/* Sizing for standard text inputs and selects */
+input[type=text],select{
+  width:100%;
+  max-width:170px;
+  padding:.15rem .25rem;
+  margin-bottom:var(--spacing-xs);
+}
+/* Textarea sizing */
+textarea{
+  width:100%;
+  max-width:170px;
+  resize:none;
+  padding:.2rem;
+  margin-bottom:var(--spacing-xs);
+}
+/* Character header specific */
+#basic-info input,#character-info input{padding:.15rem .25rem}
+
 .label,.form-group label{font-weight:600;margin-bottom:var(--spacing-xs);display:inline-block;font-size:.68rem}
 
-/* ---------- Prominent Numeric Boxes ---------- */
-#top-bar input,#attributes input,#hit-dice input,#hit-points input{font-size:.75rem;padding:.1rem;text-align:center;border-radius:2px;box-shadow:0 1px 1px rgba(0,0,0,.06)}
+/* ---------- Numeric Boxes ---------- */
+#top-bar input,#attributes input,#hit-dice input,#hit-points input{
+  font-size:.75rem;
+  padding:.12rem;
+  text-align:center;
+  max-width:70px;
+}
 #attributes .label{font-size:.7rem;margin-bottom:var(--spacing-xs)}
 
 /* ---------- Status Section ---------- */
 #hit-points div,#hit-dice div,#death-saves div,#conditions,#boons{padding:var(--spacing-xs);text-align:center}
-#hit-dice input,#hit-points input{width:70%;margin:0 auto;display:block;font-size:.75rem}
+#hit-dice input,#hit-points input{width:68%;margin:0 auto;display:block;font-size:.75rem}
 
 /* ---------- Tables ---------- */
 table{width:100%;border-collapse:collapse;margin-bottom:var(--spacing-xs)}
-th,td{padding:.1rem;border:1px solid #ccc;font-size:.65rem;text-align:center}
+th,td{padding:.12rem;border:1px solid #ccc;font-size:.65rem;text-align:center}
 
 /* ---------- Buttons ---------- */
-button,a.button{background:var(--accent);color:#ecf0f1;padding:.15rem .4rem;border:none;border-radius:2px;font-size:.65rem;cursor:pointer;transition:background .2s}
+button,a.button{
+  background:var(--accent);
+  color:#ecf0f1;
+  padding:.18rem .45rem;
+  border:none;
+  border-radius:2px;
+  font-size:.65rem;
+  cursor:pointer;
+  transition:background .2s;
+}
 button:hover,a.button:hover{background:#2980b9}
 
 /* ---------- Sidebar ---------- */
@@ -63,8 +110,9 @@ button:hover,a.button:hover{background:#2980b9}
 .w3-sidebar .w3-bar-item{font-size:.65rem;margin-bottom:var(--spacing-xs);padding:var(--spacing-xs) 0}
 
 /* ---------- Page & Footer ---------- */
-.page{margin:var(--spacing-xs) 0}
+.page{margin:var(--spacing-sm) 0}
 .footer{text-align:center;background:#2c3e50;color:#ecf0f1;padding:var(--spacing-sm);border-radius:2px;font-size:.65rem;margin-top:var(--spacing-sm)}
 
 /* ---------- Misc ---------- */
 .expando{width:100%;text-align:left;margin-bottom:var(--spacing-xs)}
+
