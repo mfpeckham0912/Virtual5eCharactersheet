@@ -30,7 +30,11 @@ input[type="checkbox"] {
 div.box {
   margin-top: 10px;
 }
-
+form.charsheet {
+  max-width: 1000px; 
+  margin: 0 auto;  
+  padding: 0 16px;  
+}
 form.charsheet div.textblock {
   display: flex;
   flex-direction: column-reverse;
