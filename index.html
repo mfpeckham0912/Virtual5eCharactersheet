@@ -1,688 +1,447 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>D&D 5e Virtual Character Sheet</title>
-  <!-- Link to the overarching CSS file -->
-  <link rel="stylesheet" href="css/app.css">
-  <!-- External CSS libraries (W3.CSS and Font Awesome) -->
-  <link rel="stylesheet" href="css/w3.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  
-  <!-- JavaScript Libraries and custom scripts -->
-  <script src="javascript/jquery.js"></script>
-  <!-- Optional: Load saved JSON sheet on startup -->
-  <script src="sheet/savedSheet.json"></script>
-  <!-- Additional custom scripts -->
-  <script src="javascript/extra.js"></script>
-  <script src="javascript/changes.js"></script>
-  <script src="javascript/add-attack.js"></script>
-  <script src="javascript/app.js"></script>
-  <!-- Save and Load Scripts -->
-  <script src="javascript/save.js"></script>
-  <script src="javascript/load.js"></script>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>D&amp;D 5e Character Sheet</title>
+  <link rel="stylesheet" href="css/app.css"/>
 </head>
-<body class="w3-container w3-flat-clouds">
-  <!-- Sidebar Navigation -->
-  <div class="w3-sidebar w3-bar-block w3-border-right w3-flat-clouds w3-animate-left" id="mySidebar" style="display:none">
-    <button onclick="w3_close()" class="w3-bar-item w3-large w3-button w3-hover-blue-gray">Close &times;</button>
-    <a href="#" class="w3-bar-item w3-button w3-hover-blue-gray" onclick="openPage('page-1'); w3_close()">Attributes & Top Bar</a>
-    <a href="#" class="w3-bar-item w3-button w3-hover-blue-gray" onclick="openPage('page-2'); w3_close()">Equipment & Mount/Pet</a>
-    <a href="#" class="w3-bar-item w3-button w3-hover-blue-gray" onclick="openPage('page-3'); w3_close()">Spell Sheet</a>
-    <a href="#" class="w3-bar-item w3-button w3-hover-blue-gray" onclick="openPage('page-4'); w3_close()">Backstory & Personality</a>
-    <a href="#" class="w3-bar-item w3-button w3-hover-blue-gray" onclick="openPage('page-5'); w3_close()">Notes</a>
-    <div class="w3-dropdown-hover">
-      <button class="w3-button w3-hover-blue-gray">Options <i class="fa fa-caret-down"></i></button>
-      <div id="menu-options" class="w3-dropdown-content w3-bar-block w3-animate-right">
-        <!-- Call the load and save functions -->
-        <a href="#" class="w3-bar-item w3-button w3-hover-blue-gray" onclick="loadNewSheet(); w3_close()">Load Save</a>
-        <a href="#" class="w3-bar-item w3-button w3-hover-blue-gray" onclick="saveSheet(); w3_close()">Save Sheet</a>
-        <a href="#" class="w3-bar-item w3-button w3-hover-blue-gray" onclick="lock()">Lock/Unlock Sheet</a>
-        <div id="lock" class="unlocked w3-padding">Unlocked</div>
-      </div>
-    </div>
-    <div class="info w3-margin-top w3-border-top">
-      <div class="label">Info & Help</div>
-      <div class="w3-margin-top">
-        <span class="auto-filled-border w3-round">Alt Color</span> = Auto-Filled
-      </div>
-    </div>
-  </div>
-  <!-- Sidebar Button -->
-  <div>
-    <button id="menu" class="w3-button w3-xlarge w3-blue-gray w3-display-topleft w3-margin w3-round" onclick="w3_open()">☰</button>
-    <button id="scroll-to-top" class="w3-button w3-xlarge w3-blue-gray w3-round">^</button>
-  </div>
-  
-  <!-- Main Content -->
-  <div onclick="w3_close()">
-    <!-- HEADER / BASIC INFO -->
-    <header id="character-basic-info" class="page-width">
-      <div id="basic-info" class="w3-card w3-round mb-md">
-        <div class="row">
-          <div class="col-half">
-            <input type="text" name="char-name" placeholder="Enter character name">
-            <span class="label">Character Name</span>
-          </div>
-          <div class="col-half">
-            <input type="text" name="level" placeholder="e.g., Fighter 3 / Rogue 2">
-            <span class="label">Class / Level</span>
-          </div>
-          <div class="col-half">
-            <input type="text" name="level-two" placeholder="Optional extra class/level">
-            <span class="label">Class / Level 2</span>
-          </div>
-        </div>
-      </div>
-      <div id="character-info" class="w3-card w3-round mb-md">
-        <div class="row">
-          <div class="col-half">
-            <input type="text" name="race-class" placeholder="Race (e.g., Human, Elf)">
-            <span class="label">Race</span>
-          </div>
-          <div class="col-half">
-            <input type="text" name="background" placeholder="Background (e.g., Soldier, Sage)">
-            <span class="label">Background</span>
-          </div>
-          <div class="col-half">
-            <input type="text" name="player-name" placeholder="Player Name">
-            <span class="label">Player Name</span>
-          </div>
-          <div class="col-half">
-            <input type="text" name="exp" placeholder="Experience points">
-            <span class="label">Experience</span>
-          </div>
-          <div class="col-half">
-            <input type="text" name="alignment" placeholder="Alignment">
-            <span class="label">Alignment</span>
-          </div>
-          <div class="col-half">
-            <input type="text" name="deity" placeholder="Deity">
-            <span class="label">Deity</span>
-          </div>
-        </div>
-      </div>
+<body>
+
+  <form class="charsheet">
+    <header>
+      <section class="charname">
+        <label for="charname">Character Name</label>
+        <input id="charname" name="charname" placeholder="Thoradin Fireforge"/>
+      </section>
+      <section class="misc">
+        <ul>
+          <li>
+            <label for="classlevel">Class &amp; Level</label>
+            <input id="classlevel" name="classlevel" placeholder="Paladin 2"/>
+          </li>
+          <li>
+            <label for="background">Background</label>
+            <input id="background" name="background" placeholder="Acolyte"/>
+          </li>
+          <li>
+            <label for="playername">Player Name</label>
+            <input id="playername" name="playername" placeholder="Player McPlayerface"/>
+          </li>
+          <li>
+            <label for="race">Race</label>
+            <input id="race" name="race" placeholder="Half-elf"/>
+          </li>
+          <li>
+            <label for="alignment">Alignment</label>
+            <input id="alignment" name="alignment" placeholder="Lawful Good"/>
+          </li>
+          <li>
+            <label for="experiencepoints">Experience Points</label>
+            <input id="experiencepoints" name="experiencepoints" placeholder="3240"/>
+          </li>
+        </ul>
+      </section>
     </header>
-    
-    <!-- Page 1: Attributes, Top Bar, Status, Attacks & Saves/Skills -->
-    <div id="page-1" class="page">
-      <!-- Top Bar -->
-      <div id="top-bar" class="w3-card w3-round mb-md">
-        <div class="row">
-          <div class="col-half">
-            <input type="text" name="proficiency" maxlength="2" placeholder="Bonus">
-            <span class="label">Proficiency Bonus</span>
-          </div>
-          <div class="col-half">
-            <input type="text" name="initiative" maxlength="2" placeholder="Init">
-            <span class="label">Initiative</span>
-          </div>
-          <div class="col-half">
-            <input type="text" name="passive-perception" maxlength="2" placeholder="Passive" class="auto-filled-border">
-            <span class="label">Passive Perception</span>
-          </div>
-          <div class="col-half">
-            <input type="text" name="ac" maxlength="2" placeholder="AC">
-            <span class="label">Armor Class</span>
-          </div>
-          <div class="col-half">
-            <input type="text" name="speed" maxlength="2" placeholder="Speed">
-            <span class="label">Speed</span>
-          </div>
-          <div class="col-half">
-            <input type="text" name="spell-dc" maxlength="2" placeholder="Spell DC" class="auto-filled-border">
-            <span class="label">Spell Save DC</span>
-          </div>
-        </div>
-      </div>
-      <!-- Attributes -->
-      <div id="attributes" class="w3-card w3-round mb-md">
-        <div class="row">
-          <div class="col-half">
-            <span class="label">Strength</span>
-            <input type="text" name="str" maxlength="2" placeholder="Str">
-            <input type="text" name="str-mod" maxlength="2" placeholder="Mod" class="auto-filled-border">
-          </div>
-          <div class="col-half">
-            <span class="label">Dexterity</span>
-            <input type="text" name="dex" maxlength="2" placeholder="Dex">
-            <input type="text" name="dex-mod" maxlength="2" placeholder="Mod" class="auto-filled-border">
-          </div>
-          <div class="col-half">
-            <span class="label">Constitution</span>
-            <input type="text" name="con" maxlength="2" placeholder="Con">
-            <input type="text" name="con-mod" maxlength="2" placeholder="Mod" class="auto-filled-border">
-          </div>
-          <div class="col-half">
-            <span class="label">Intelligence</span>
-            <input type="text" name="int" maxlength="2" placeholder="Int">
-            <input type="text" name="int-mod" maxlength="2" placeholder="Mod" class="auto-filled-border">
-          </div>
-          <div class="col-half">
-            <span class="label">Wisdom</span>
-            <input type="text" name="wis" maxlength="2" placeholder="Wis">
-            <input type="text" name="wis-mod" maxlength="2" placeholder="Mod" class="auto-filled-border">
-          </div>
-          <div class="col-half">
-            <span class="label">Charisma</span>
-            <input type="text" name="cha" maxlength="2" placeholder="Cha">
-            <input type="text" name="cha-mod" maxlength="2" placeholder="Mod" class="auto-filled-border">
-          </div>
-        </div>
-      </div>
-      <!-- Status Section -->
-      <div id="status" class="w3-card w3-round mb-md">
-        <div class="row">
-          <div class="col-half" id="hit-points">
-            <div id="temp-health">
-              <input type="text" name="temp-health" placeholder="Temporary Health">
-              <span class="label">Temporary Health</span>
-            </div>
-            <div id="current-health">
-              <input type="text" name="current-health" placeholder="Current Health">
-              <span class="label">Current Health</span>
-            </div>
-            <div id="max-health">
-              <input type="text" name="max-health" placeholder="Maximum Health">
-              <span class="label">Maximum Health</span>
-            </div>
-          </div>
-          <div class="col-half" id="hit-dice">
-            <span class="label">Hit Dice</span>
-            <div>
-              <span class="sub-label">Current</span>
-              <input type="text" name="current-hd" placeholder="Current HD">
-              <input type="text" name="hit-dice" placeholder="HD">
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div id="death-saves" class="col-half">
-            <span class="label">Death Saves</span>
-            <div id="successes">
-              <span class="sub-label">Success</span>
-              <div id="success-num">
-                <input class="w3-check" type="checkbox" name="success-1">
-                <input class="w3-check" type="checkbox" name="success-2">
-                <input class="w3-check" type="checkbox" name="success-3">
-              </div>
-            </div>
-            <div id="failures">
-              <span class="sub-label">Failure</span>
-              <div id="failure-num">
-                <input class="w3-check" type="checkbox" name="failure-1">
-                <input class="w3-check" type="checkbox" name="failure-2">
-                <input class="w3-check" type="checkbox" name="failure-3">
-              </div>
-            </div>
-          </div>
-          <div class="col-half">
-            <div id="conditions">
-              <span class="label">Conditions</span>
-              <textarea name="conditions" rows="5" placeholder="List conditions"></textarea>
-            </div>
-            <div id="boons">
-              <span class="label">Boons</span>
-              <textarea name="boons" rows="5" placeholder="List boons"></textarea>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Saves & Skills Section -->
-      <div id="saves-skills" class="w3-card w3-round mb-md">
-        <div class="row">
-          <div id="saves" class="col-half">
-            <span class="label">Saving Throws</span>
-            <div class="row">
-              <div id="str-save" class="box">
-                <input type="checkbox" name="prof">
-                <input type="text" name="str-save" maxlength="2" placeholder="Str Save">
-                <span class="sub-label">Strength</span>
-              </div>
-              <div id="dex-save" class="box">
-                <input type="checkbox" name="prof">
-                <input type="text" name="dex-save" maxlength="2" placeholder="Dex Save">
-                <span class="sub-label">Dexterity</span>
-              </div>
-              <div id="con-save" class="box">
-                <input type="checkbox" name="prof">
-                <input type="text" name="con-save" maxlength="2" placeholder="Con Save">
-                <span class="sub-label">Constitution</span>
-              </div>
-              <div id="int-save" class="box">
-                <input type="checkbox" name="prof">
-                <input type="text" name="int-save" maxlength="2" placeholder="Int Save">
-                <span class="sub-label">Intelligence</span>
-              </div>
-              <div id="wis-save" class="box">
-                <input type="checkbox" name="prof">
-                <input type="text" name="wis-save" maxlength="2" placeholder="Wis Save">
-                <span class="sub-label">Wisdom</span>
-              </div>
-              <div id="cha-save" class="box">
-                <input type="checkbox" name="prof">
-                <input type="text" name="cha-save" maxlength="2" placeholder="Cha Save">
-                <span class="sub-label">Charisma</span>
-              </div>
-            </div>
-          </div>
-          <div id="skills" class="col-half">
-            <span class="label">Skills</span>
-            <div class="row">
-              <!-- Example: Athletics -->
-              <div class="skill-section box">
-                <div><span class="label">Athletics</span></div>
-                <div>
-                  <input type="checkbox" name="prof">
-                  <input type="checkbox" name="expr">
-                  <input type="text" name="athletics-skill" maxlength="3" placeholder="Athletics">
+
+    <main>
+      <!-- ATTRIBUTES & SKILLS -->
+      <section>
+        <section class="attributes">
+          <div class="scores">
+            <ul>
+              <li>
+                <div class="score">
+                  <label for="Strengthscore">Strength</label>
+                  <input id="Strengthscore" name="Strengthscore" placeholder="10"/>
                 </div>
-              </div>
-              <!-- Example: Stealth -->
-              <div class="skill-section box">
-                <div><span class="label">Stealth</span></div>
-                <div>
-                  <input type="checkbox" name="prof">
-                  <input type="checkbox" name="expr">
-                  <input type="text" name="stealth-skill" maxlength="3" placeholder="Stealth">
+                <div class="modifier">
+                  <input name="Strengthmod" placeholder="+0"/>
                 </div>
+              </li>
+              <li>
+                <div class="score">
+                  <label for="Dexteritys
+core">Dexterity</label>
+                  <input id="Dexterityscore" name="Dexterityscore" placeholder="10"/>
+                </div>
+                <div class="modifier">
+                  <input name="Dexteritymod" placeholder="+0"/>
+                </div>
+              </li>
+              <li>
+                <div class="score">
+                  <label for="Constitutionscore">Constitution</label>
+                  <input id="Constitutionscore" name="Constitutionscore" placeholder="10"/>
+                </div>
+                <div class="modifier">
+                  <input name="Constitutionmod" placeholder="+0"/>
+                </div>
+              </li>
+              <li>
+                <div class="score">
+                  <label for="Wisdomscore">Wisdom</label>
+                  <input id="Wisdomscore" name="Wisdomscore" placeholder="10"/>
+                </div>
+                <div class="modifier">
+                  <input name="Wisdommod" placeholder="+0"/>
+                </div>
+              </li>
+              <li>
+                <div class="score">
+                  <label for="Intelligencescore">Intelligence</label>
+                  <input id="Intelligencescore" name="Intelligencescore" placeholder="10"/>
+                </div>
+                <div class="modifier">
+                  <input name="Intelligencemod" placeholder="+0"/>
+                </div>
+              </li>
+              <li>
+                <div class="score">
+                  <label for="Charismascore">Charisma</label>
+                  <input id="Charismascore" name="Charismascore" placeholder="10"/>
+                </div>
+                <div class="modifier">
+                  <input name="Charismamod" placeholder="+0"/>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="attr-applications">
+            <div class="inspiration box">
+              <div class="label-container">
+                <label for="inspiration">Inspiration</label>
               </div>
+              <input id="inspiration" name="inspiration" type="checkbox"/>
             </div>
-            <!-- Spell Save DC Attribute Selector -->
-            <div id="spell-att" class="box">
-              <span class="label">Spell Save DC Attribute</span>
-              <select name="spell-att">
-                <option value="none">No Spell Casting</option>
-                <option value="str">Strength</option>
-                <option value="dex">Dexterity</option>
-                <option value="con">Constitution</option>
-                <option value="int">Intelligence</option>
-                <option value="wis">Wisdom</option>
-                <option value="cha">Charisma</option>
-              </select>
+
+            <div class="proficiencybonus box">
+              <div class="label-container">
+                <label for="proficiencybonus">Proficiency Bonus</label>
+              </div>
+              <input id="proficiencybonus" name="proficiencybonus" placeholder="0"/>
+            </div>
+
+            <div class="saves list-section box">
+              <ul>
+                <li>
+                  <label for="Strength-save">Strength</label>
+                  <input id="Strength-save" name="Strength-save" type="text" placeholder="+0"/>
+                  <input name="Strength-save-prof" type="checkbox"/>
+                </li>
+                <li>
+                  <label for="Dexterity-save">Dexterity</label>
+                  <input id="Dexterity-save" name="Dexterity-save" type="text" placeholder="+0"/>
+                  <input name="Dexterity-save-prof" type="checkbox"/>
+                </li>
+                <li>
+                  <label for="Constitution-save">Constitution</label>
+                  <input id="Constitution-save" name="Constitution-save" type="text" placeholder="+0"/>
+                  <input name="Constitution-save-prof" type="checkbox"/>
+                </li>
+                <li>
+                  <label for="Wisdom-save">Wisdom</label>
+                  <input id="Wisdom-save" name="Wisdom-save" type="text" placeholder="+0"/>
+                  <input name="Wisdom-save-prof" type="checkbox"/>
+                </li>
+                <li>
+                  <label for="Intelligence-save">Intelligence</label>
+                  <input id="Intelligence-save" name="Intelligence-save" type="text" placeholder="+0"/>
+                  <input name="Intelligence-save-prof" type="checkbox"/>
+                </li>
+                <li>
+                  <label for="Charisma-save">Charisma</label>
+                  <input id="Charisma-save" name="Charisma-save" type="text" placeholder="+0"/>
+                  <input name="Charisma-save-prof" type="checkbox"/>
+                </li>
+              </ul>
+              <div class="label">Saving Throws</div>
+            </div>
+
+            <div class="skills list-section box">
+              <ul>
+                <li>
+                  <label for="Acrobatics">Acrobatics <span class="skill">(Dex)</span></label>
+                  <input id="Acrobatics" name="Acrobatics" type="text" placeholder="+0"/>
+                  <input name="Acrobatics-prof" type="checkbox"/>
+                </li>
+                <li>
+                  <label for="Animal Handling">Animal Handling <span class="skill">(Wis)</span></label>
+                  <input id="Animal Handling" name="Animal Handling" type="text" placeholder="+0"/>
+                  <input name="Animal Handling-prof" type="checkbox"/>
+                </li>
+                <li>
+                  <label for="Arcana">Arcana <span class="skill">(Int)</span></label>
+                  <input id="Arcana" name="Arcana" type="text" placeholder="+0"/>
+                  <input name="Arcana-prof" type="checkbox"/>
+                </li>
+                <li>
+                  <label for="Athletics">Athletics <span class="skill">(Str)</span></label>
+                  <input id="Athletics" name="Athletics" type="text" placeholder="+0"/>
+                  <input name="Athletics-prof" type="checkbox"/>
+                </li>
+                <li>
+                  <label for="Deception">Deception <span class="skill">(Cha)</span></label>
+                  <input id="Deception" name="Deception" type="text" placeholder="+0"/>
+                  <input name="Deception-prof" type="checkbox"/>
+                </li>
+                <li>
+                  <label for="History">History <span class="skill">(Int)</span></label>
+                  <input id="History" name="History" type="text" placeholder="+0"/>
+                  <input name="History-prof" type="checkbox"/>
+                </li>
+                <li>
+                  <label for="Insight">Insight <span class="skill">(Wis)</span></label>
+                  <input id="Insight" name="Insight" type="text" placeholder="+0"/>
+                  <input name="Insight-prof" type="checkbox"/>
+                </li>
+                <li>
+                  <label for="Intimidation">Intimidation <span class="skill">(Cha)</span></label>
+                  <input id="Intimidation" name="Intimidation" type="text" placeholder="+0"/>
+                  <input name="Intimidation-prof" type="checkbox"/>
+                </li>
+                <li>
+                  <label for="Investigation">Investigation <span class="skill">(Int)</span></label>
+                  <input id="Investigation" name="Investigation" type="text" placeholder="+0"/>
+                  <input name="Investigation-prof" type="checkbox"/>
+                </li>
+                <li>
+                  <label for="Medicine">Medicine <span class="skill">(Wis)</span></label>
+                  <input id="Medicine" name="Medicine" type="text" placeholder="+0"/>
+                  <input name="Medicine-prof" type="checkbox"/>
+                </li>
+                <li>
+                  <label for="Nature">Nature <span class="skill">(Int)</span></label>
+                  <input id="Nature" name="Nature" type="text" placeholder="+0"/>
+                  <input name="Nature-prof" type="checkbox"/>
+                </li>
+                <li>
+                  <label for="Perception">Perception <span class="skill">(Wis)</span></label>
+                  <input id="Perception" name="Perception" type="text" placeholder="+0"/>
+                  <input name="Perception-prof" type="checkbox"/>
+                </li>
+                <li>
+                  <label for="Performance">Performance <span class="skill">(Cha)</span></label>
+                  <input id="Performance" name="Performance" type="text" placeholder="+0"/>
+                  <input name="Performance-prof" type="checkbox"/>
+                </li>
+                <li>
+                  <label for="Persuasion">Persuasion <span class="skill">(Cha)</span></label>
+                  <input id="Persuasion" name="Persuasion" type="text" placeholder="+0"/>
+                  <input name="Persuasion-prof" type="checkbox"/>
+                </li>
+                <li>
+                  <label for="Religion">Religion <span class="skill">(Int)</span></label>
+                  <input id="Religion" name="Religion" type="text" placeholder="+0"/>
+                  <input name="Religion-prof" type="checkbox"/>
+                </li>
+                <li>
+                  <label for="Sleight of Hand">Sleight of Hand <span class="skill">(Dex)</span></label>
+                  <input id="Sleight of Hand" name="Sleight of Hand" type="text" placeholder="+0"/>
+                  <input name="Sleight of Hand-prof" type="checkbox"/>
+                </li>
+                <li>
+                  <label for="Stealth">Stealth <span class="skill">(Dex)</span></label>
+                  <input id="Stealth" name="Stealth" type="text" placeholder="+0"/>
+                  <input name="Stealth-prof" type="checkbox"/>
+                </li>
+                <li>
+                  <label for="Survival">Survival <span class="skill">(Wis)</span></label>
+                  <input id="Survival" name="Survival" type="text" placeholder="+0"/>
+                  <input name="Survival-prof" type="checkbox"/>
+                </li>
+              </ul>
+              <div class="label">Skills</div>
             </div>
           </div>
+
+        </section>
+
+        <div class="passive-perception box">
+          <div class="label-container">
+            <label for="passiveperception">Passive Wisdom (Perception)</label>
+          </div>
+          <input id="passiveperception" name="passiveperception" placeholder="10"/>
         </div>
-      </div>
-      <!-- Attacks & Charges Section -->
-      <div id="attacks-spells" class="w3-card w3-round mb-md">
-        <table id="attacks">
-          <tr>
-            <th>Name</th>
-            <th>Base Stat</th>
-            <th>Bonus/DC</th>
-            <th>Damage</th>
-            <th>Damage Type</th>
-            <th>Action</th>
-          </tr>
-        </table>
-        <div id="add-attack">
-          <span class="label title">Add a New Attack:</span>
-          <div id="attack-form" class="row">
-            <div id="att-name" class="box">
-              <input type="text" name="name" placeholder="Attack Name">
-              <span class="label">Name of the Attack</span>
-            </div>
-            <div id="attack-stack" class="box">
-              <select name="stat">
-                <option value="str">Strength</option>
-                <option value="dex">Dexterity</option>
-                <option value="con">Constitution</option>
-                <option value="int">Intelligence</option>
-                <option value="wis">Wisdom</option>
-                <option value="cha">Charisma</option>
-              </select>
-              <span class="label">Base Stat</span>
-            </div>
-            <div id="attack-type" class="box">
-              <select name="type">
-                <option value="toHit">Roll to Hit</option>
-                <option value="save">Save DC</option>
-              </select>
-              <span class="label">Type</span>
-            </div>
-            <div id="attack-prof" class="box">
-              <input type="checkbox" name="proficiency">
-              <span class="sub-label">Add Proficiency</span>
-            </div>
-            <div id="attack-dc" class="box" style="display:none;">
-              <input type="text" name="dc" placeholder="Set DC">
-              <input type="checkbox" name="spell-dc">
-              <span class="sub-label">Use Spell DC?</span>
-            </div>
-            <div id="attack-dice" class="box">
-              <input type="text" name="dice" placeholder="Enter Dice">
-              <span class="label">Dice</span>
-            </div>
-            <div id="attack-bonus" class="box">
-              <input type="text" name="bonus" placeholder="Bonus">
-              <span class="label">Bonus</span>
-            </div>
-            <div id="attack-dmg-type" class="box">
-              <input type="text" name="dmg-type" placeholder="Damage Type">
-              <span class="label">Damage Type</span>
-            </div>
-            <button class="w3-button w3-blue-gray w3-round-large" onclick="att_attack()">Add Attack</button>
+
+        <div class="otherprofs box textblock">
+          <label for="otherprofs">Other Proficiencies and Languages</label>
+          <textarea id="otherprofs" name="otherprofs"></textarea>
+        </div>
+      </section>
+
+      <!-- COMBAT -->
+      <section class="combat">
+        <div class="armorclass">
+          <div>
+            <label for="ac">Armor Class</label>
+            <input id="ac" name="ac" type="text" placeholder="10"/>
           </div>
         </div>
-        <!-- Charges (Example: Charge 1) -->
-        <div id="charges" class="w3-card w3-round mt-md">
-          <div id="charge-1" class="box">
-            <input type="text" name="charge-1" placeholder="Charge Name">
-            <div>
-              <label><input type="checkbox" name="1"> 1</label>
-              <label><input type="checkbox" name="2"> 2</label>
-              <label><input type="checkbox" name="3"> 3</label>
-              <label><input type="checkbox" name="4"> 4</label>
-              <label><input type="checkbox" name="5"> 5</label>
-              <label><input type="checkbox" name="6"> 6</label>
-              <label><input type="checkbox" name="7"> 7</label>
-              <label><input type="checkbox" name="8"> 8</label>
-              <label><input type="checkbox" name="9"> 9</label>
-              <label><input type="checkbox" name="10"> 10</label>
+        <div class="initiative">
+          <div>
+            <label for="initiative">Initiative</label>
+            <input id="initiative" name="initiative" type="text" placeholder="+0"/>
+          </div>
+        </div>
+        <div class="speed">
+          <div>
+            <label for="speed">Speed</label>
+            <input id="speed" name="speed" type="text" placeholder="30"/>
+          </div>
+        </div>
+        <div class="hp">
+          <div class="regular">
+            <div class="max">
+              <label for="maxhp">Hit Point Maximum</label>
+              <input id="maxhp" name="maxhp" type="text" placeholder="10"/>
+            </div>
+            <div class="current">
+              <label for="currenthp">Current Hit Points</label>
+              <input id="currenthp" name="currenthp" type="text"/>
+            </div>
+          </div>
+          <div class="temporary">
+            <label for="temphp">Temporary Hit Points</label>
+            <input id="temphp" name="temphp" type="text"/>
+          </div>
+        </div>
+        <div class="hitdice">
+          <div>
+            <div class="total">
+              <label for="totalhd">Total</label>
+              <input id="totalhd" name="totalhd" type="text" placeholder="2d10"/>
+            </div>
+            <div class="remaining">
+              <label for="remaininghd">Hit Dice</label>
+              <input id="remaininghd" name="remaininghd" type="text"/>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-    
-    <!-- Page 2: Equipment and Mount/Pet -->
-    <div id="page-2" class="page" style="display:none;">
-      <div class="w3-card w3-round mb-md">
-        <button class="expando w3-button w3-blue-gray w3-round-large">Inventory</button>
-        <div id="equipment" class="w3-animate-opacity">
-          <div class="row">
-            <div class="col-half">
-              <div id="currancy" class="box mb-sm">
-                <span class="label">Currency</span>
-                <div class="row">
-                  <div class="col-half">
-                    <span class="sub-label">Copper</span>
-                    <input type="text" name="copper" placeholder="Copper">
-                  </div>
-                  <div class="col-half">
-                    <span class="sub-label">Silver</span>
-                    <input type="text" name="silver" placeholder="Silver">
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-half">
-                    <span class="sub-label">Gold</span>
-                    <input type="text" name="gold" placeholder="Gold">
-                  </div>
-                  <div class="col-half">
-                    <span class="sub-label">Electrum</span>
-                    <input type="text" name="electrum" placeholder="Electrum">
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-half">
-                    <span class="sub-label">Platinum</span>
-                    <input type="text" name="platinum" placeholder="Platinum">
-                  </div>
-                  <div class="col-half">
-                    <span class="label">Total</span>
-                    <select name="base">
-                      <option value="c">Copper</option>
-                      <option value="s">Silver</option>
-                      <option value="g" selected>Gold</option>
-                      <option value="e">Electrum</option>
-                      <option value="p">Platinum</option>
-                    </select>
-                    <input type="text" name="total" placeholder="Total">
-                  </div>
+        <div class="deathsaves">
+          <div>
+            <div class="label">
+              <label>Death Saves</label>
+            </div>
+            <div class="marks">
+              <div class="deathsuccesses">
+                <label>Successes</label>
+                <div class="bubbles">
+                  <input type="checkbox" name="deathsuccess1"/>
+                  <input type="checkbox" name="deathsuccess2"/>
+                  <input type="checkbox" name="deathsuccess3"/>
                 </div>
               </div>
-              <div id="encumberance" class="box">
-                <span class="label">Encumberance</span>
-                <div>
-                  <span class="sub-label">Base (STR x 5)</span>
-                  <input type="text" name="base-encumberance" placeholder="Base Encumberance">
-                </div>
-                <div>
-                  <span class="sub-label">Encumbered (STR x 10)</span>
-                  <input type="text" name="encumbered-encumberance" placeholder="Encumbered">
-                </div>
-                <div>
-                  <span class="sub-label">Heavy Encumbered (STR x 15)</span>
-                  <input type="text" name="h-encumbered-encumberance" placeholder="Heavy Encumbered">
-                </div>
-                <div>
-                  <span class="sub-label">Push (STR x 30)</span>
-                  <input type="text" name="push-encumberance" placeholder="Push">
+              <div class="deathfails">
+                <label>Failures</label>
+                <div class="bubbles">
+                  <input type="checkbox" name="deathfail1"/>
+                  <input type="checkbox" name="deathfail2"/>
+                  <input type="checkbox" name="deathfail3"/>
                 </div>
               </div>
             </div>
-            <div class="col-half">
-              <table>
-                <tr>
-                  <th>Equipment</th>
-                  <th>Weight</th>
-                </tr>
-                <tr>
-                  <td><input type="text" name="name" placeholder="Item Name"></td>
-                  <td><input type="text" name="weight" placeholder="Weight"></td>
-                </tr>
-                <tr id="total">
-                  <th>Total Weight</th>
-                  <td><input type="text" name="total-weight" placeholder="Total Weight"></td>
-                </tr>
-              </table>
-            </div>
           </div>
         </div>
-      </div>
-      <!-- Mount/Pet Section -->
-      <div class="w3-card w3-round mb-md">
-        <button class="expando w3-button w3-blue-gray w3-round-large">Mount/Pet</button>
-        <div id="mount-pet" class="w3-animate-opacity">
-          <div class="row">
-            <div class="col-half">
-              <div id="mount-name" class="box mb-sm">
-                <span class="label">Name</span>
-                <input type="text" name="mount-name" placeholder="Mount Name">
-              </div>
-              <div id="mount-type" class="box mb-sm">
-                <span class="label">Type</span>
-                <input type="text" name="mount-type" placeholder="Mount Type">
-              </div>
-              <div id="mount-health" class="box mb-sm">
-                <span class="label">Health</span>
-                <input type="text" name="mount-health" placeholder="Mount Health">
-              </div>
-              <div id="mount-ac" class="box mb-sm">
-                <span class="label">AC</span>
-                <input type="text" name="mount-ac" placeholder="Mount AC">
-              </div>
-              <div id="mount-speed" class="box">
-                <span class="label">Speed</span>
-                <input type="text" name="mount-speed" placeholder="Mount Speed">
-              </div>
-            </div>
-            <div class="col-half">
-              <div id="mount-notes" class="box">
-                <span class="label">Mount/Pet Attacks and Notes</span>
-                <textarea name="mount-notes" rows="10" placeholder="Enter mount/pet details"></textarea>
-              </div>
-            </div>
-          </div>
+      </section>
+
+      <!-- ATTACKS & SPELLCASTING -->
+      <section class="attacksandspellcasting">
+        <div>
+          <label>Attacks &amp; Spellcasting</label>
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Atk Bonus</th>
+                <th>Damage/Type</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><input name="atkname1" type="text"/></td>
+                <td><input name="atkbonus1" type="text"/></td>
+                <td><input name="atkdamage1" type="text"/></td>
+              </tr>
+              <tr>
+                <td><input name="atkname2" type="text"/></td>
+                <td><input name="atkbonus2" type="text"/></td>
+                <td><input name="atkdamage2" type="text"/></td>
+              </tr>
+              <tr>
+                <td><input name="atkname3" type="text"/></td>
+                <td><input name="atkbonus3" type="text"/></td>
+                <td><input name="atkdamage3" type="text"/></td>
+              </tr>
+            </tbody>
+          </table>
+          <textarea></textarea>
         </div>
-      </div>
-    </div>
-    
-    <!-- Page 3: Spell Sheet -->
-    <div id="page-3" class="page" style="display:none;">
-      <div class="w3-card w3-round mb-md">
-        <button class="expando w3-button w3-blue-gray w3-round-large">Spell Info</button>
-        <div id="spell-info" class="w3-animate-opacity">
-          <div class="row">
-            <div class="col-half">
-              <div class="box">
-                <input type="text" name="class" placeholder="Spellcasting Class">
-                <span class="label">Spellcasting Class</span>
-              </div>
-            </div>
-            <div class="col-half">
-              <div class="box">
-                <input type="text" name="att" maxlength="3" placeholder="Casting Attribute" class="auto-filled-border">
-                <span class="label">Spell Casting Attribute</span>
-              </div>
-            </div>
+      </section>
+
+      <!-- EQUIPMENT -->
+      <section class="equipment">
+        <div>
+          <label>Equipment</label>
+          <div class="money">
+            <ul>
+              <li>
+                <label for="cp">cp</label>
+                <input id="cp" name="cp"/>
+              </li>
+              <li>
+                <label for="sp">sp</label>
+                <input id="sp" name="sp"/>
+              </li>
+              <li>
+                <label for="ep">ep</label>
+                <input id="ep" name="ep"/>
+              </li>
+              <li>
+                <label for="gp">gp</label>
+                <input id="gp" name="gp"/>
+              </li>
+              <li>
+                <label for="pp">pp</label>
+                <input id="pp" name="pp"/>
+              </li>
+            </ul>
           </div>
-          <div class="row">
-            <div class="col-half">
-              <div class="box">
-                <input type="text" name="dc" maxlength="2" placeholder="Spell Save DC" class="auto-filled-border">
-                <span class="label">Spell Save DC</span>
-              </div>
-            </div>
-            <div class="col-half">
-              <div class="box">
-                <input type="text" name="bonus" maxlength="2" placeholder="Spell Attack Bonus" class="auto-filled-border">
-                <span class="label">Spell Attack Bonus</span>
-              </div>
-            </div>
-          </div>
+          <textarea placeholder="Equipment list here"></textarea>
         </div>
-      </div>
-      <!-- Spells by Level -->
-      <div class="w3-card w3-round mb-md">
-        <button class="expando w3-button w3-blue-gray w3-round-large">Spells</button>
-        <div id="spells" class="w3-animate-opacity">
-          <!-- Cantrips Section -->
-          <div id="cantrips" class="mb-md">
-            <div class="box">
-              <span class="level">Cantrips</span>
-            </div>
-            <div class="row">
-              <div class="col-half box">
-                <input type="text" name="spell-name" placeholder="Spell Name">
-              </div>
-            </div>
-          </div>
-          <!-- 1st-Level Spells (Repeat for levels 2–9 as needed) -->
-          <div id="level-1" class="mb-md">
-            <div class="box">
-              <span class="level">1<sup>st</sup> Level</span>
-              <input type="text" name="total-1" maxlength="2" placeholder="Total Slots">
-              <span class="sub-label">Slots Total</span>
-            </div>
-            <div class="row">
-              <div class="col-half box">
-                <input type="checkbox" name="preped">
-                <input type="text" name="spell-name" placeholder="Spell Name">
-              </div>
-            </div>
-          </div>
+      </section>
+
+      <!-- FLAVOR -->
+      <section class="flavor">
+        <div class="personality">
+          <label for="personality">Personality</label>
+          <textarea id="personality" name="personality"></textarea>
         </div>
-      </div>
-    </div>
-    
-    <!-- Page 4: Backstory & Personality -->
-    <div id="page-4" class="page" style="display:none;">
-      <div class="w3-card w3-round mb-md">
-        <button class="expando w3-button w3-blue-gray w3-round-large">Personality</button>
-        <div id="personality" class="w3-animate-opacity">
-          <div class="row">
-            <div class="col-half box">
-              <textarea name="personality-traits" rows="4" placeholder="Describe personality traits"></textarea>
-              <span class="label">Personality Traits</span>
-            </div>
-            <div class="col-half box">
-              <textarea name="ideals" rows="4" placeholder="Describe ideals"></textarea>
-              <span class="label">Ideals</span>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-half box">
-              <textarea name="bonds" rows="4" placeholder="Describe bonds"></textarea>
-              <span class="label">Bonds</span>
-            </div>
-            <div class="col-half box">
-              <textarea name="flaws" rows="4" placeholder="Describe flaws"></textarea>
-              <span class="label">Flaws</span>
-            </div>
-          </div>
+        <div class="ideals">
+          <label for="ideals">Ideals</label>
+          <textarea id="ideals" name="ideals"></textarea>
         </div>
-      </div>
-      <div class="w3-card w3-round mb-md">
-        <button class="expando w3-button w3-blue-gray w3-round-large">Backstory</button>
-        <div id="character-background" class="w3-animate-opacity">
-          <div class="row">
-            <div class="col-half box">
-              <textarea name="backstory" rows="30" placeholder="Write your backstory here"></textarea>
-              <span class="label">Character Backstory</span>
-            </div>
-            <div class="col-half box">
-              <div id="char-img" class="w3-card w3-round">
-                [Image Placeholder]
-              </div>
-              <span class="label">Character Appearance</span>
-            </div>
-          </div>
-          <div class="box">
-            <div class="row">
-              <div class="col-half">
-                <input type="text" name="name" placeholder="Organization/Guild Name">
-                <span class="label">Organization or Guild</span>
-              </div>
-              <div class="col-half">
-                <div id="alli-img" class="w3-round">
-                  [Symbol Placeholder]
-                </div>
-                <span class="label">Symbol</span>
-              </div>
-            </div>
-            <textarea name="allies-organizations" rows="4" placeholder="List allies and organizations"></textarea>
-          </div>
+        <div class="bonds">
+          <label for="bonds">Bonds</label>
+          <textarea id="bonds" name="bonds"></textarea>
         </div>
-      </div>
-    </div>
-    
-    <!-- Page 5: Notes -->
-    <div id="page-5" class="page" style="display:none;">
-      <div class="w3-card w3-round mb-md">
-        <button class="expando w3-button w3-blue-gray w3-round-large">Notes</button>
-        <div id="notes-page" class="w3-animate-opacity">
-          <div class="row">
-            <div class="col-half box">
-              <textarea name="notes-1" rows="15" placeholder="Enter your notes here"></textarea>
-            </div>
-            <div class="col-half box">
-              <textarea name="notes-2" rows="15" placeholder="Additional notes"></textarea>
-            </div>
-          </div>
+        <div class="flaws">
+          <label for="flaws">Flaws</label>
+          <textarea id="flaws" name="flaws"></textarea>
         </div>
-      </div>
-    </div>
-    
-    <!-- FOOTER (No "Created by" text) -->
-    <footer class="page-width">
-      <div class="footer">
-        D&D 5<sup>th</sup> Edition Character Sheet
-      </div>
-    </footer>
-  </div>
-  
-  <!-- Hidden file input for loading a JSON sheet -->
-  <input type="file" id="load-sheet-input" style="display:none;">
-  
-  <!-- Minimal JavaScript for Sidebar and Page Navigation -->
-  <script>
-    function w3_open() {
-      document.getElementById("mySidebar").style.display = "block";
-    }
-    function w3_close() {
-      document.getElementById("mySidebar").style.display = "none";
-    }
-    function openPage(pageName) {
-      var pages = document.getElementsByClassName("page");
-      for (var i = 0; i < pages.length; i++) {
-        pages[i].style.display = "none";
-      }
-      document.getElementById(pageName).style.display = "block";
-    }
-  </script>
+      </section>
+
+      <!-- FEATURES & TRAITS -->
+      <section class="features">
+        <div>
+          <label for="features">Features &amp; Traits</label>
+          <textarea id="features" name="features"></textarea>
+        </div>
+      </section>
+    </main>
+  </form>
+
+  <script src="javascript/scripts.js"></script>
 </body>
 </html>
