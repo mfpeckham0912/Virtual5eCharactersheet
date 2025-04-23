@@ -31,15 +31,6 @@ div.box {
   margin-top: 10px;
 }
 
-/* Character sheet form */
-form.charsheet main {
-  display: grid;
-  grid-template-columns: 1fr 1.7fr 1fr;
-  grid-auto-rows: auto;
-  grid-gap: 10px;
-  margin-top: 20px;
-}
-
 form.charsheet div.textblock {
   display: flex;
   flex-direction: column-reverse;
@@ -145,11 +136,64 @@ form.charsheet header section.misc ul li input {
 form.charsheet main {
   display: grid;
   grid-template-columns: 1fr 1.7fr 1fr;
-  grid-auto-rows: auto;
-  grid-gap: 10px;
-  margin-top: 20px;
+  column-gap: 10px;
+  row-gap: 10px;    /* space between rows */
+  margin-top: 20px; /* if you still want space above the whole grid */
+}
+form.charsheet main > section:nth-of-type(1) {
+  grid-area: attrs;          /* Attributes & Skills wrapper */
+}
+form.charsheet main > section.combat {
+  grid-area: combat;         /* Combat block */
+}
+form.charsheet main > section.attacksandspellcasting {
+  align-self: start;
+  grid-area: attacks;        /* Attacks & Spellcasting */
+}
+form.charsheet main > section.equipment { grid-area: equipment; }
+
+form.charsheet main > section.flavor {
+  grid-area: flavor;         /* Personality/Ideals/Bonds/Flaws */
+}
+form.charsheet main > section.features {
+  grid-area: features;       /* Features & Traits */
+}
+/* column-placement overrides */
+form.charsheet main > section:nth-of-type(1) {
+  grid-column: 1;
+  grid-row: 1 / span 3;
+} 
+form.charsheet main > section.combat,
+form.charsheet main > section.attacksandspellcasting,
+form.charsheet main > section.equipment {
+grid-column: 2;
+grid-row: 3;
+}
+form.charsheet main > section.flavor,
+form.charsheet main > section.features {
+grid-column: 3;
+}
+form.charsheet main > section.combat {
+grid-column: 2;
+grid-row: 1;
+}
+form.charsheet main > section.attacksandspellcasting {
+grid-column: 2;
+grid-row: 2;
+}
+form.charsheet main > section.equipment {
+grid-column: 2;
+grid-row: 3;
 }
 
+form.charsheet main > section.flavor {
+grid-column: 3;
+grid-row: 1;
+}
+form.charsheet main > section.features {
+grid-column: 3;
+grid-row: 2;
+}
 /* Label containers in main */
 form.charsheet main div.label-container {
   position: relative;
@@ -168,30 +212,6 @@ form.charsheet main div.label-container > label {
   transform: translate(0%, 50%);
   width: 100%;
   font-size: 8px;
-}
-
-/* Column-1: the very first <section> in <main> */
-form.charsheet main > section:nth-child(1) {
-  grid-column: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Column-2: combat, attacks & equipment */
-form.charsheet main > section.combat,
-form.charsheet main > section.attacksandspellcasting,
-form.charsheet main > section.equipment {
-  grid-column: 2;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Column-3: flavor & features */
-form.charsheet main > section.flavor,
-form.charsheet main > section.features {
-  grid-column: 3;
-  display: flex;
-  flex-direction: column;
 }
 
 /* Attribute blocks */
@@ -653,6 +673,7 @@ form.charsheet section.attacksandspellcasting > div > table input {
 }
 
 form.charsheet section.attacksandspellcasting textarea {
+  height: 15em;
   border: none;
 }
 
@@ -660,7 +681,7 @@ form.charsheet section.attacksandspellcasting textarea {
 form.charsheet section.equipment {
   border: 1px solid black;
   border-radius: 10px;
-  margin-top: 10px;
+  margin-top: 0;
 }
 
 form.charsheet section.equipment > div {
@@ -770,6 +791,6 @@ form.charsheet section.features div label {
 form.charsheet section.features div textarea {
   border: none;
   padding: 5px;
-  height: 43em;
+  height: 40em;
 }
   
