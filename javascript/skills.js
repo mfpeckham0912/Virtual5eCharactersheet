@@ -54,3 +54,4 @@ document.addEventListener('DOMContentLoaded', () => {
   // Populate all skills on load
   Object.keys(skillAbilityMap).forEach(updateSkill);
 });
+
