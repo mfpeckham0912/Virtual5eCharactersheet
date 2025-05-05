@@ -302,7 +302,7 @@ form.charsheet {
   form.charsheet main section div.attr-applications div.list-section ul li label {
     order: 3;
     text-transform: none;
-    font-size: 8px;
+    font-size: 10px;
     text-align: left;
   }
   form.charsheet main section div.attr-applications div.list-section ul li label span.skill {
