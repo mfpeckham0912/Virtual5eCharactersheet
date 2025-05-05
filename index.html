@@ -1,456 +1,445 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>D&amp;D 5e Character Sheet</title>
-  <link rel="stylesheet" href="css/app.css"/>
+  <meta name='viewport' content='width=device-width,initial-scale=1.0'>
+  <meta charset='UTF-8'>
+  <title>5e Sheet Base</title>
+  <link href='css/app.css' rel='stylesheet'>
 </head>
 <body>
-
-  <form class="charsheet">
+  <div class="charsheet-wrapper">
+  <form class='charsheet'>
     <header>
-      <section class="charname">
-        <label for="charname">Character Name</label>
-        <input id="charname" name="charname" placeholder="-"/>
+      <section class='charname'>
+        <label for='charname'>Character Name</label>
+        <input name='charname' id='charname' placeholder='-'>
       </section>
-      <section class="misc">
+      <section class='misc'>
         <ul>
           <li>
-            <label for="classlevel">Class &amp; Level</label>
-            <input id="classlevel" name="classlevel" placeholder="-"/>
+            <label for='classlevel'>Class &amp; Level</label>
+            <input name='classlevel' id='classlevel' placeholder='-'>
           </li>
           <li>
-            <label for="background">Background</label>
-            <input id="background" name="background" placeholder="-"/>
+            <label for='background'>Background</label>
+            <input name='background' id='background' placeholder='-'>
           </li>
           <li>
-            <label for="playername">Player Name</label>
-            <input id="playername" name="playername" placeholder="-"/>
+            <label for='playername'>Player Name</label>
+            <input name='playername' id='playername' placeholder='-'>
           </li>
           <li>
-            <label for="race">Race</label>
-            <input id="race" name="race" placeholder="-"/>
+            <label for='race'>Race</label>
+            <input name='race' id='race' placeholder='-'>
           </li>
           <li>
-            <label for="alignment">Alignment</label>
-            <input id="alignment" name="alignment" placeholder="-"/>
+            <label for='alignment'>Alignment</label>
+            <input name='alignment' id='alignment' placeholder='-'>
           </li>
           <li>
-            <label for="experiencepoints">Experience Points</label>
-            <input id="experiencepoints" name="experiencepoints" placeholder="-"/>
+            <label for='experiencepoints'>Experience Points</label>
+            <input name='experiencepoints' id='experiencepoints' placeholder='-'>
           </li>
         </ul>
       </section>
     </header>
 
     <main>
-      <!-- ATTRIBUTES & SKILLS -->
+
+      <!-- Attributes & Skills -->
       <section>
-        <section class="attributes">
-          <div class="scores">
+        <section class='attributes'>
+          <div class='scores'>
             <ul>
               <li>
-                <div class="score">
-                  <label for="Strengthscore">Strength</label>
-                  <input id="Strengthscore" name="Strengthscore" placeholder="10"/>
+                <div class='score'>
+                  <label for='Strengthscore'>Strength</label>
+                  <input name='Strengthscore' id='Strengthscore' placeholder='10'>
                 </div>
-                <div class="modifier">
-                  <input name="Strengthmod" placeholder="+0"/>
-                </div>
-              </li>
-              <li>
-                <div class="score">
-                  <label for="Dexteritys
-              core">Dexterity</label>
-                  <input id="Dexterityscore" name="Dexterityscore" placeholder="10"/>
-                </div>
-                <div class="modifier">
-                  <input name="Dexteritymod" placeholder="+0"/>
+                <div class='modifier'>
+                  <input name='Strengthmod' placeholder='+0'>
                 </div>
               </li>
               <li>
-                <div class="score">
-                  <label for="Constitutionscore">Constitution</label>
-                  <input id="Constitutionscore" name="Constitutionscore" placeholder="10"/>
+                <div class='score'>
+                  <label for='Dexterityscore'>Dexterity</label>
+                  <input name='Dexterityscore' id='Dexterityscore' placeholder='10'>
                 </div>
-                <div class="modifier">
-                  <input name="Constitutionmod" placeholder="+0"/>
-                </div>
-              </li>
-              <li>
-                <div class="score">
-                  <label for="Wisdomscore">Wisdom</label>
-                  <input id="Wisdomscore" name="Wisdomscore" placeholder="10"/>
-                </div>
-                <div class="modifier">
-                  <input name="Wisdommod" placeholder="+0"/>
+                <div class='modifier'>
+                  <input name='Dexteritymod' placeholder='+0'>
                 </div>
               </li>
               <li>
-                <div class="score">
-                  <label for="Intelligencescore">Intelligence</label>
-                  <input id="Intelligencescore" name="Intelligencescore" placeholder="10"/>
+                <div class='score'>
+                  <label for='Constitutionscore'>Constitution</label>
+                  <input name='Constitutionscore' id='Constitutionscore' placeholder='10'>
                 </div>
-                <div class="modifier">
-                  <input name="Intelligencemod" placeholder="+0"/>
+                <div class='modifier'>
+                  <input name='Constitutionmod' placeholder='+0'>
                 </div>
               </li>
               <li>
-                <div class="score">
-                  <label for="Charismascore">Charisma</label>
-                  <input id="Charismascore" name="Charismascore" placeholder="10"/>
+                <div class='score'>
+                  <label for='Wisdomscore'>Wisdom</label>
+                  <input name='Wisdomscore' id='Wisdomscore' placeholder='10'>
                 </div>
-                <div class="modifier">
-                  <input name="Charismamod" placeholder="+0"/>
+                <div class='modifier'>
+                  <input name='Wisdommod' placeholder='+0'>
+                </div>
+              </li>
+              <li>
+                <div class='score'>
+                  <label for='Intelligencescore'>Intelligence</label>
+                  <input name='Intelligencescore' id='Intelligencescore' placeholder='10'>
+                </div>
+                <div class='modifier'>
+                  <input name='Intelligencemod' placeholder='+0'>
+                </div>
+              </li>
+              <li>
+                <div class='score'>
+                  <label for='Charismascore'>Charisma</label>
+                  <input name='Charismascore' id='Charismascore' placeholder='10'>
+                </div>
+                <div class='modifier'>
+                  <input name='Charismamod' placeholder='+0'>
                 </div>
               </li>
             </ul>
           </div>
 
-          <div class="attr-applications">
-            <div class="inspiration box">
-              <div class="label-container">
-                <label for="inspiration">Inspiration</label>
-              </div>
-              <input id="inspiration" name="inspiration" type="checkbox"/>
+          <div class='attr-applications'>
+            <div class='inspiration box'>
+              <label for='inspiration'>Inspiration</label>
+              <input name='inspiration' id='inspiration' type='checkbox'>
             </div>
 
-            <div class="proficiencybonus box">
-              <div class="label-container">
-                <label for="proficiencybonus">Proficiency Bonus</label>
-              </div>
-              <input id="proficiencybonus" name="proficiencybonus" placeholder="-"/>
+            <div class='proficiencybonus box'>
+              <label for='proficiencybonus'>Proficiency Bonus</label>
+              <input name='proficiencybonus' id='proficiencybonus' placeholder='-'>
             </div>
 
-            <div class="saves list-section box">
+            <div class='saves list-section box'>
               <ul>
                 <li>
-                  <label for="Strength-save">Strength</label>
-                  <input id="Strength-save" name="Strength-save" type="text" placeholder="-"/>
-                  <input name="Strength-save-prof" type="checkbox"/>
+                  <label for='Strength-save'>Strength</label>
+                  <input name='Strength-save' id='Strength-save' placeholder='-'>
+                  <input name='Strength-save-prof' id='Strength-save-prof' type='checkbox'>
                 </li>
                 <li>
-                  <label for="Dexterity-save">Dexterity</label>
-                  <input id="Dexterity-save" name="Dexterity-save" type="text" placeholder="-"/>
-                  <input name="Dexterity-save-prof" type="checkbox"/>
+                  <label for='Dexterity-save'>Dexterity</label>
+                  <input name='Dexterity-save' id='Dexterity-save' placeholder='-'>
+                  <input name='Dexterity-save-prof' id='Dexterity-save-prof' type='checkbox'>
                 </li>
                 <li>
-                  <label for="Constitution-save">Constitution</label>
-                  <input id="Constitution-save" name="Constitution-save" type="text" placeholder="-"/>
-                  <input name="Constitution-save-prof" type="checkbox"/>
+                  <label for='Constitution-save'>Constitution</label>
+                  <input name='Constitution-save' id='Constitution-save' placeholder='-'>
+                  <input name='Constitution-save-prof' id='Constitution-save-prof' type='checkbox'>
                 </li>
                 <li>
-                  <label for="Wisdom-save">Wisdom</label>
-                  <input id="Wisdom-save" name="Wisdom-save" type="text" placeholder="-"/>
-                  <input name="Wisdom-save-prof" type="checkbox"/>
+                  <label for='Wisdom-save'>Wisdom</label>
+                  <input name='Wisdom-save' id='Wisdom-save' placeholder='-'>
+                  <input name='Wisdom-save-prof' id='Wisdom-save-prof' type='checkbox'>
                 </li>
                 <li>
-                  <label for="Intelligence-save">Intelligence</label>
-                  <input id="Intelligence-save" name="Intelligence-save" type="text" placeholder="-"/>
-                  <input name="Intelligence-save-prof" type="checkbox"/>
+                  <label for='Intelligence-save'>Intelligence</label>
+                  <input name='Intelligence-save' id='Intelligence-save' placeholder='-'>
+                  <input name='Intelligence-save-prof' id='Intelligence-save-prof' type='checkbox'>
                 </li>
                 <li>
-                  <label for="Charisma-save">Charisma</label>
-                  <input id="Charisma-save" name="Charisma-save" type="text" placeholder="-"/>
-                  <input name="Charisma-save-prof" type="checkbox"/>
+                  <label for='Charisma-save'>Charisma</label>
+                  <input name='Charisma-save' id='Charisma-save' placeholder='-'>
+                  <input name='Charisma-save-prof' id='Charisma-save-prof' type='checkbox'>
                 </li>
               </ul>
-              <div class="label">Saving Throws</div>
+              <div class='label'>Saving Throws</div>
             </div>
 
-            <div class="skills list-section box">
+            <div class='skills list-section box'>
               <ul>
                 <li>
-                  <label for="Acrobatics">Acrobatics <span class="skill">(Dex)</span></label>
-                  <input id="Acrobatics" name="Acrobatics" type="text" placeholder="-"/>
-                  <input name="Acrobatics-prof" type="checkbox"/>
+                  <label for='Acrobatics'>Acrobatics <span class='skill'>(Dex)</span></label>
+                  <input name='Acrobatics' id='Acrobatics' placeholder='-'>
+                  <input name='Acrobatics-prof' id='Acrobatics-prof' type='checkbox'>
                 </li>
                 <li>
-                  <label for="Animal Handling">Animal Handling <span class="skill">(Wis)</span></label>
-                  <input id="Animal Handling" name="Animal Handling" type="text" placeholder="-"/>
-                  <input name="Animal Handling-prof" type="checkbox"/>
+                  <label for='Animal Handling'>Animal Handling <span class='skill'>(Wis)</span></label>
+                  <input name='Animal Handling' id='Animal Handling' placeholder='-'>
+                  <input name='Animal Handling-prof' id='Animal Handling-prof' type='checkbox'>
                 </li>
                 <li>
-                  <label for="Arcana">Arcana <span class="skill">(Int)</span></label>
-                  <input id="Arcana" name="Arcana" type="text" placeholder="-"/>
-                  <input name="Arcana-prof" type="checkbox"/>
+                  <label for='Arcana'>Arcana <span class='skill'>(Int)</span></label>
+                  <input name='Arcana' id='Arcana' placeholder='-'>
+                  <input name='Arcana-prof' id='Arcana-prof' type='checkbox'>
                 </li>
                 <li>
-                  <label for="Athletics">Athletics <span class="skill">(Str)</span></label>
-                  <input id="Athletics" name="Athletics" type="text" placeholder="-"/>
-                  <input name="Athletics-prof" type="checkbox"/>
+                  <label for='Athletics'>Athletics <span class='skill'>(Str)</span></label>
+                  <input name='Athletics' id='Athletics' placeholder='-'>
+                  <input name='Athletics-prof' id='Athletics-prof' type='checkbox'>
                 </li>
                 <li>
-                  <label for="Deception">Deception <span class="skill">(Cha)</span></label>
-                  <input id="Deception" name="Deception" type="text" placeholder="-"/>
-                  <input name="Deception-prof" type="checkbox"/>
+                  <label for='Deception'>Deception <span class='skill'>(Cha)</span></label>
+                  <input name='Deception' id='Deception' placeholder='-'>
+                  <input name='Deception-prof' id='Deception-prof' type='checkbox'>
                 </li>
                 <li>
-                  <label for="History">History <span class="skill">(Int)</span></label>
-                  <input id="History" name="History" type="text" placeholder="-"/>
-                  <input name="History-prof" type="checkbox"/>
+                  <label for='History'>History <span class='skill'>(Int)</span></label>
+                  <input name='History' id='History' placeholder='-'>
+                  <input name='History-prof' id='History-prof' type='checkbox'>
                 </li>
                 <li>
-                  <label for="Insight">Insight <span class="skill">(Wis)</span></label>
-                  <input id="Insight" name="Insight" type="text" placeholder="-"/>
-                  <input name="Insight-prof" type="checkbox"/>
+                  <label for='Insight'>Insight <span class='skill'>(Wis)</span></label>
+                  <input name='Insight' id='Insight' placeholder='-'>
+                  <input name='Insight-prof' id='Insight-prof' type='checkbox'>
                 </li>
                 <li>
-                  <label for="Intimidation">Intimidation <span class="skill">(Cha)</span></label>
-                  <input id="Intimidation" name="Intimidation" type="text" placeholder="-"/>
-                  <input name="Intimidation-prof" type="checkbox"/>
+                  <label for='Intimidation'>Intimidation <span class='skill'>(Cha)</span></label>
+                  <input name='Intimidation' id='Intimidation' placeholder='-'>
+                  <input name='Intimidation-prof' id='Intimidation-prof' type='checkbox'>
                 </li>
                 <li>
-                  <label for="Investigation">Investigation <span class="skill">(Int)</span></label>
-                  <input id="Investigation" name="Investigation" type="text" placeholder="-"/>
-                  <input name="Investigation-prof" type="checkbox"/>
+                  <label for='Investigation'>Investigation <span class='skill'>(Int)</span></label>
+                  <input name='Investigation' id='Investigation' placeholder='-'>
+                  <input name='Investigation-prof' id='Investigation-prof' type='checkbox'>
                 </li>
                 <li>
-                  <label for="Medicine">Medicine <span class="skill">(Wis)</span></label>
-                  <input id="Medicine" name="Medicine" type="text" placeholder="-"/>
-                  <input name="Medicine-prof" type="checkbox"/>
+                  <label for='Medicine'>Medicine <span class='skill'>(Wis)</span></label>
+                  <input name='Medicine' id='Medicine' placeholder='-'>
+                  <input name='Medicine-prof' id='Medicine-prof' type='checkbox'>
                 </li>
                 <li>
-                  <label for="Nature">Nature <span class="skill">(Int)</span></label>
-                  <input id="Nature" name="Nature" type="text" placeholder="-"/>
-                  <input name="Nature-prof" type="checkbox"/>
+                  <label for='Nature'>Nature <span class='skill'>(Int)</span></label>
+                  <input name='Nature' id='Nature' placeholder='-'>
+                  <input name='Nature-prof' id='Nature-prof' type='checkbox'>
                 </li>
                 <li>
-                  <label for="Perception">Perception <span class="skill">(Wis)</span></label>
-                  <input id="Perception" name="Perception" type="text" placeholder="-"/>
-                  <input name="Perception-prof" type="checkbox"/>
+                  <label for='Perception'>Perception <span class='skill'>(Wis)</span></label>
+                  <input name='Perception' id='Perception' placeholder='-'>
+                  <input name='Perception-prof' id='Perception-prof' type='checkbox'>
                 </li>
                 <li>
-                  <label for="Performance">Performance <span class="skill">(Cha)</span></label>
-                  <input id="Performance" name="Performance" type="text" placeholder="-"/>
-                  <input name="Performance-prof" type="checkbox"/>
+                  <label for='Performance'>Performance <span class='skill'>(Cha)</span></label>
+                  <input name='Performance' id='Performance' placeholder='-'>
+                  <input name='Performance-prof' id='Performance-prof' type='checkbox'>
                 </li>
                 <li>
-                  <label for="Persuasion">Persuasion <span class="skill">(Cha)</span></label>
-                  <input id="Persuasion" name="Persuasion" type="text" placeholder="-"/>
-                  <input name="Persuasion-prof" type="checkbox"/>
+                  <label for='Persuasion'>Persuasion <span class='skill'>(Cha)</span></label>
+                  <input name='Persuasion' id='Persuasion' placeholder='-'>
+                  <input name='Persuasion-prof' id='Persuasion-prof' type='checkbox'>
                 </li>
                 <li>
-                  <label for="Religion">Religion <span class="skill">(Int)</span></label>
-                  <input id="Religion" name="Religion" type="text" placeholder="-"/>
-                  <input name="Religion-prof" type="checkbox"/>
+                  <label for='Religion'>Religion <span class='skill'>(Int)</span></label>
+                  <input name='Religion' id='Religion' placeholder='-'>
+                  <input name='Religion-prof' id='Religion-prof' type='checkbox'>
                 </li>
                 <li>
-                  <label for="Sleight of Hand">Sleight of Hand <span class="skill">(Dex)</span></label>
-                  <input id="Sleight of Hand" name="Sleight of Hand" type="text" placeholder="-"/>
-                  <input name="Sleight of Hand-prof" type="checkbox"/>
+                  <label for='Sleight of Hand'>Sleight of Hand <span class='skill'>(Dex)</span></label>
+                  <input name='Sleight of Hand' id='Sleight of Hand' placeholder='-'>
+                  <input name='Sleight of Hand-prof' id='Sleight of Hand-prof' type='checkbox'>
                 </li>
                 <li>
-                  <label for="Stealth">Stealth <span class="skill">(Dex)</span></label>
-                  <input id="Stealth" name="Stealth" type="text" placeholder="-"/>
-                  <input name="Stealth-prof" type="checkbox"/>
+                  <label for='Stealth'>Stealth <span class='skill'>(Dex)</span></label>
+                  <input name='Stealth' id='Stealth' placeholder='-'>
+                  <input name='Stealth-prof' id='Stealth-prof' type='checkbox'>
                 </li>
                 <li>
-                  <label for="Survival">Survival <span class="skill">(Wis)</span></label>
-                  <input id="Survival" name="Survival" type="text" placeholder="-"/>
-                  <input name="Survival-prof" type="checkbox"/>
+                  <label for='Survival'>Survival <span class='skill'>(Wis)</span></label>
+                  <input name='Survival' id='Survival' placeholder='-'>
+                  <input name='Survival-prof' id='Survival-prof' type='checkbox'>
                 </li>
               </ul>
-              <div class="label">Skills</div>
+              <div class='label'>Skills</div>
             </div>
           </div>
-
         </section>
 
-        <div class="passive-perception box">
-          <div class="label-container">
-            <label for="passiveperception">Passive Wisdom (Perception)</label>
-          </div>
-          <input id="passiveperception" name="passiveperception" placeholder="10"/>
+        <div class='passive-perception box'>
+          <label for='passiveperception'>Passive Perception</label>
+          <input name='passiveperception' id='passiveperception' placeholder='10'>
         </div>
 
-        <div class="otherprofs box textblock">
-          <label for="otherprofs">Other Proficiencies and Languages</label>
-          <textarea id="otherprofs" name="otherprofs"></textarea>
+        <div class='otherprofs box textblock'>
+          <label for='otherprofs'>Other Proficiencies and Languages</label>
+          <textarea name='otherprofs' id='otherprofs'></textarea>
         </div>
       </section>
 
-      <!-- COMBAT -->
-      <section class="combat">
-        <div class="armorclass">
-          <div>
-            <label for="ac">Armor Class</label>
-            <input id="ac" name="ac" type="text" placeholder="-"/>
-          </div>
+      <!-- Combat -->
+      <section class='combat'>
+        <div class='armorclass'>
+          <label for='ac'>AC</label>
+          <input name='ac' id='ac' placeholder='-'>
         </div>
-        <div class="initiative">
-          <div>
-            <label for="initiative">Initiative</label>
-            <input id="initiative" name="initiative" type="text" placeholder="-"/>
-          </div>
+        <div class='initiative'>
+          <label for='initiative'>Initiative</label>
+          <input name='initiative' id='initiative' placeholder='-'>
         </div>
-        <div class="speed">
-          <div>
-            <label for="speed">Speed</label>
-            <input id="speed" name="speed" type="text" placeholder="-"/>
-          </div>
+        <div class='speed'>
+          <label for='speed'>Speed</label>
+          <input name='speed' id='speed' placeholder='-'>
         </div>
-        <div class="hp">
-          <div class="regular">
-            <div class="max">
-              <label for="maxhp">Hit Point Maximum</label>
-              <input id="maxhp" name="maxhp" type="text" placeholder="10"/>
+        <div class='spelldc'>
+          <label for='spelldc'>Spell DC</label>
+          <input name='spelldc' id='spelldc' placeholder='-'>
+        </div>
+        <div class='hp'>
+          <div class='regular'>
+            <div class='max'>
+              <label for='maxhp'>Hit Point Maximum</label>
+              <input name='maxhp' id='maxhp' placeholder='10'>
             </div>
-            <div class="current">
-              <label for="currenthp">Current Hit Points</label>
-              <input id="currenthp" name="currenthp" type="text"/>
+            <div class='current'>
+              <label for='currenthp'>Current Hit Points</label>
+              <input name='currenthp' id='currenthp' placeholder=''>
             </div>
           </div>
-          <div class="temporary">
-            <label for="temphp">Temporary Hit Points</label>
-            <input id="temphp" name="temphp" type="text"/>
+          <div class='temporary'>
+            <label for='temphp'>Temporary Hit Points</label>
+            <input name='temphp' id='temphp' placeholder=''>
           </div>
         </div>
-        <div class="hitdice">
-          <div>
-            <div class="total">
-              <label for="totalhd">Total</label>
-              <input id="totalhd" name="totalhd" type="text" placeholder="2d10"/>
-            </div>
-            <div class="remaining">
-              <label for="remaininghd">Hit Dice</label>
-              <input id="remaininghd" name="remaininghd" type="text"/>
-            </div>
+        <div class='hitdice'>
+          <div class='total'>
+            <label for='totalhd'>Total</label>
+            <input name='totalhd' id='totalhd' placeholder='2d10'>
+          </div>
+          <div class='remaining'>
+            <label for='remaininghd'>Hit Dice</label>
+            <input name='remaininghd' id='remaininghd' placeholder=''>
           </div>
         </div>
-        <div class="deathsaves">
-          <div>
-            <div class="label">
-              <label>Death Saves</label>
-            </div>
-            <div class="marks">
-              <div class="deathsuccesses">
-                <label>Successes</label>
-                <div class="bubbles">
-                  <input type="checkbox" name="deathsuccess1"/>
-                  <input type="checkbox" name="deathsuccess2"/>
-                  <input type="checkbox" name="deathsuccess3"/>
-                </div>
+        <div class='deathsaves'>
+          <div class='label'><label>Death Saves</label></div>
+          <div class='marks'>
+            <div class='deathsuccesses'>
+              <label>Successes</label>
+              <div class='bubbles'>
+                <input name='deathsuccess1' type='checkbox'>
+                <input name='deathsuccess2' type='checkbox'>
+                <input name='deathsuccess3' type='checkbox'>
               </div>
-              <div class="deathfails">
-                <label>Failures</label>
-                <div class="bubbles">
-                  <input type="checkbox" name="deathfail1"/>
-                  <input type="checkbox" name="deathfail2"/>
-                  <input type="checkbox" name="deathfail3"/>
-                </div>
+            </div>
+            <div class='deathfails'>
+              <label>Failures</label>
+              <div class='bubbles'>
+                <input name='deathfail1' type='checkbox'>
+                <input name='deathfail2' type='checkbox'>
+                <input name='deathfail3' type='checkbox'>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- ATTACKS & SPELLCASTING -->
+      <!-- Attacks & Spellcasting -->
       <section class="attacksandspellcasting">
-        <div>
-          <label>Attacks &amp; Spellcasting</label>
-          <table>
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Atk Bonus</th>
-                <th>Damage/Type</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><input name="atkname1" type="text"/></td>
-                <td><input name="atkbonus1" type="text"/></td>
-                <td><input name="atkdamage1" type="text"/></td>
-              </tr>
-              <tr>
-                <td><input name="atkname2" type="text"/></td>
-                <td><input name="atkbonus2" type="text"/></td>
-                <td><input name="atkdamage2" type="text"/></td>
-              </tr>
-              <tr>
-                <td><input name="atkname3" type="text"/></td>
-                <td><input name="atkbonus3" type="text"/></td>
-                <td><input name="atkdamage3" type="text"/></td>
-              </tr>
-            </tbody>
-          </table>
-          <textarea></textarea>
+        <label>Attacks &amp; Spellcasting</label>
+        <div class="attack-form">
+          <input id="attack-name"     placeholder="Attack name">
+          <select id="attack-tohit-stat">
+            <option value="Strength">Strength</option>
+            <option value="Dexterity">Dexterity</option>
+            <option value="Constitution">Constitution</option>
+            <option value="Intelligence">Intelligence</option>
+            <option value="Wisdom">Wisdom</option>
+            <option value="Charisma">Charisma</option>
+          </select>
+          <input id="attack-dice"     placeholder="Dice (e.g. 1d8)">
+          <select id="attack-dmg-source">
+            <option value="stat">Use stat mod</option>
+            <option value="none">No mod</option>
+          </select>
+          <button id="add-attack-btn" type="button">Add Attack</button>
+          <div id="attack-error" style="color:red;font-size:0.8em;display:none"></div>
         </div>
+      
+        <table id="attacks-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>To-Hit</th>
+              <th>Dice</th>
+              <th>Damage Mod</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+      
+
+      <!-- Equipment -->
+      <section class='equipment'>
+        <label>Equipment</label>
+        <div class='money'>
+          <ul>
+            <li><label for='cp'>cp</label><input name='cp' id='cp'></li>
+            <li><label for='sp'>sp</label><input name='sp' id='sp'></li>
+            <li><label for='ep'>ep</label><input name='ep' id='ep'></li>
+            <li><label for='gp'>gp</label><input name='gp' id='gp'></li>
+            <li><label for='pp'>pp</label><input name='pp' id='pp'></li>
+          </ul>
+        </div>
+        <textarea name="equipment" id="equipment" placeholder="Equipment list here"></textarea>
       </section>
 
-      <!-- EQUIPMENT -->
-      <section class="equipment">
-        <div>
-          <label>Equipment</label>
-          <div class="money">
-            <ul>
-              <li>
-                <label for="cp">cp</label>
-                <input id="cp" name="cp"/>
-              </li>
-              <li>
-                <label for="sp">sp</label>
-                <input id="sp" name="sp"/>
-              </li>
-              <li>
-                <label for="ep">ep</label>
-                <input id="ep" name="ep"/>
-              </li>
-              <li>
-                <label for="gp">gp</label>
-                <input id="gp" name="gp"/>
-              </li>
-              <li>
-                <label for="pp">pp</label>
-                <input id="pp" name="pp"/>
-              </li>
-            </ul>
-          </div>
-          <textarea placeholder="Equipment list here"></textarea>
+      <!-- Flavor -->
+      <section class='flavor'>
+        <div class='personality'>
+          <label for='personality'>Personality</label>
+          <textarea name='personality' id='personality'></textarea>
+        </div>
+        <div class='ideals'>
+          <label for='ideals'>Ideals</label>
+          <textarea name='ideals' id='ideals'></textarea>
+        </div>
+        <div class='bonds'>
+          <label for='bonds'>Bonds</label>
+          <textarea name='bonds' id='bonds'></textarea>
+        </div>
+        <div class='flaws'>
+          <label for='flaws'>Flaws</label>
+          <textarea name='flaws' id='flaws'></textarea>
         </div>
       </section>
-
-      <!-- FLAVOR -->
-      <section class="flavor">
-        <div class="personality">
-          <label for="personality">Personality</label>
-          <textarea id="personality" name="personality"></textarea>
-        </div>
-        <div class="ideals">
-          <label for="ideals">Ideals</label>
-          <textarea id="ideals" name="ideals"></textarea>
-        </div>
-        <div class="bonds">
-          <label for="bonds">Bonds</label>
-          <textarea id="bonds" name="bonds"></textarea>
-        </div>
-        <div class="flaws">
-          <label for="flaws">Flaws</label>
-          <textarea id="flaws" name="flaws"></textarea>
-        </div>
-      </section>
-
-      <!-- FEATURES & TRAITS -->
-      <section class="features">
-        <div>
-          <label for="features">Features &amp; Traits</label>
-          <textarea id="features" name="features"></textarea>
-        </div>
+    
+      <!-- Features & Traits -->
+      <section class='features'>
+        <label for='features'>Features &amp; Traits</label>
+        <textarea name='features' id='features'></textarea>
       </section>
     </main>
-    <div class="box save-load" style="display:flex; gap:10px; margin-top:20px;">
-      <button id="saveBtn" type="button">Save</button>
-      <button id="loadBtn" type="button">Load</button>
-      <input id="fileInput" type="file" accept=".json" style="display:none"/>
-    </div>
-  </form>
 
-  <script src="javascript/modifier.js"></script>
-  <script src="javascript/savingthrow.js"></script>
-  <script src="javascript/skills.js"></script>
-  <script src="javascript/perception.js"></script>
-  <script src="javascript/storage.js"></script>
+    <div class='save-load box' style='display:flex;gap:10px;margin-top:20px'>
+      <button id='saveBtn' type='button'>Save</button>
+      <button id='loadBtn' type='button'>Load</button>
+      <input id='fileInput' accept='.json' type='file'>
+    </div>
+</form>
+ <section class="roll-log box">
+   <div class="label">Combat Log</div>
+    <div id="rollLog" class="roll-log-messages"></div>
+    <div class="roll-log-controls">
+      <select id="diceType">
+        <option value="4">d4</option>
+        <option value="6" selected>d6</option>
+        <option value="8">d8</option>
+        <option value="10">d10</option>
+        <option value="12">d12</option>
+        <option value="20">d20</option>
+      </select>
+      <button id="rollDiceBtn" type="button">Roll</button>
+      <button id="clearLogBtn" type="button">Clear</button>
+    </div>
+ </section>
+</div> 
+
+
+  <script src="javascript/attacks.js"></script>
+  <script src='javascript/storage.js'></script>
+  <script src='javascript/modifier.js'></script>
+  <script src='javascript/savingthrow.js'></script>
+  <script src='javascript/skills.js'></script>
+  <script src='javascript/perception.js'></script>
+  <script src="javascript/diceroller.js"></script>
 </body>
 </html>
